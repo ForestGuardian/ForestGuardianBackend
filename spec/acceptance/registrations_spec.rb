@@ -10,6 +10,7 @@ resource 'Registrations' do
   post '/api/v1/users' do
     parameter :email, 'Email of the new user', 'Type': 'String'
     parameter :password, 'Password of at least 8 characters', 'Type': 'String'
+    parameter :name, 'Name', 'Type', 'String'
 
     response_field :id, 'Id of the new created user', scope: :data,'Type': 'Number'
     response_field :email, 'Email of the new user', scope: :data,'Type': 'String'
@@ -18,6 +19,7 @@ resource 'Registrations' do
     #request
     let(:email) { "#{SecureRandom.hex(6)}@forestguardian.org" }
     let(:password) { 'secret_pass' }
+    let(:name) { SecureRandom.hex(6) }
 
     let(:raw_post) { params.to_json }
 
