@@ -333,7 +333,7 @@ $(function() {
         /* Forest types for Costa Rica */
         var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
             layers:'bi18_tipos_bosque_costa_rica_2015',
-            styles: 'bi18_tipos_bosque_costa_rica_2015',
+            styles: 'bosque_cr_fg',
             transparent: true,
             format: 'image/png'
         }).addTo(map);
