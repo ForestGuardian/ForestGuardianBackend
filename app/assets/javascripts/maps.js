@@ -295,9 +295,9 @@ $(function() {
 
     fireIcon = L.icon({
         iconUrl: '/assets/fire.png',
-        iconSize:     [32, 37],
-        iconAnchor:   [16, 36],
-        popupAnchor:  [0, -37]
+        iconSize:     [60, 60],
+        iconAnchor:   [30, 60],
+        popupAnchor:  [0, -60]
     });
 
     //Capturing the moveend event from the map
