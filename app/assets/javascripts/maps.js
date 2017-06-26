@@ -166,7 +166,7 @@ function addWildfireMessage(latitude, longitude, brightness, temperature, humidi
     var popup = L.popup({offset: L.point(0, -37)})
         .setLatLng(L.latLng(latitude, longitude))
         .setContent('<b>Incendio</b>' +
-            '<br>Intensidad: ' + brightness +
+            '<br>Intensidad: ' + brightness + " K" +
             '<br>Temperatura: ' + temperature + " &#8451;" +
             '<br>Humedad: ' + humidity + "%" +
             '<br><a href="javascript:mobileShowDetails();">Detalles</a>')
@@ -331,11 +331,8 @@ $(function() {
     };
     if ( $('#map').hasClass("forests") ){
         /* Forest types for Costa Rica */
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi18_tipos_bosque_costa_rica_2015',
-            styles: 'bosque_cr_fg',
-            transparent: true,
-            format: 'image/png'
+        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi18_tipos_bosque_costa_rica_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
+          tms: true
         }).addTo(map);
 
         /* Forest types for Honduras */
