@@ -336,27 +336,18 @@ $(function() {
         }).addTo(map);
 
         /* Forest types for Honduras */
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi21_tipos_bosque_honduras_2015_v2',
-            styles: 'bi21_tipos_bosque_honduras_2015',
-            transparent: true,
-            format: 'image/png'
+        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi21_tipos_bosque_honduras_2015_v2@EPSG:900913@png/{z}/{x}/{y}.png', {
+          tms: true
         }).addTo(map);
 
         /* Forest types for El Salvador */
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi19_tipos_bosque_el_salvador_2015',
-            styles: 'bi19_tipos_bosque_el_salvador_2015',
-            transparent: true,
-            format: 'image/png'
+        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi19_tipos_bosque_el_salvador_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
+          tms: true
         }).addTo(map);
 
         /* Forest types for Belice */
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi15_tipos_bosque_belice_2015',
-            styles: 'bi15_tipos_bosque_belice_2015',
-            transparent: true,
-            format: 'image/png'
+        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi15_tipos_bosque_belice_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
+          tms: true
         }).addTo(map);
     };
     if ( $('#map').hasClass("protected_areas") ){
