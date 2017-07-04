@@ -268,16 +268,7 @@ function windytyMain(map) {
         iconAnchor:   [16, 36]
     });
 
-    var geojsonLayer = new L.GeoJSON.AJAX("http://forestdev6339.cloudapp.net/Leaflet/central_america.json", {
-        middleware:function(data){
-            return L.geoJson(data, {
-                onEachFeature: function (feature, layer) {
-                    layer.setIcon(fireIcon);
-                }
-            }).addTo(map);
-        }
-    });
-    geojsonLayer.addTo(map);
+    downloadMODISData();
 }
 
 $(function() {
@@ -339,16 +330,7 @@ $(function() {
     /* MODIS data layers */
 
     //Data from the backend
-    MODISLayer = new L.GeoJSON.AJAX("http://forestdev6339.cloudapp.net/Leaflet/central_america.json", {
-        middleware:function(data){
-            return L.geoJson(data, {
-                onEachFeature: function (feature, layer) {
-                    layer.setIcon(fireIcon);
-                }
-            }).addTo(map);
-        }
-    });
-    MODISLayer.addTo(map);
+    MODISLayer = L.GeoJSON.AJAX(null, {}).addTo(map);
 
     //NASA's WMS service
     var wmsLayer = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
