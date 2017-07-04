@@ -332,11 +332,6 @@ $(function() {
         checkZoomLevel();
     });
 
-    /* MODIS data layers */
-
-    //Data from the backend
-    MODISLayer = L.GeoJSON.AJAX(null, {}).addTo(map);
-
     //NASA's WMS service
     var wmsLayer = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
         layers:'fires24',
