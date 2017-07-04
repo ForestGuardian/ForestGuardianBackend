@@ -544,7 +544,7 @@ function relocateWindyLogo(){
     var logoView = $('a.logo')
     logoView.css('left','')
     logoView.css('bottom','')
-    logoView.css('left','60px')
+    logoView.css('right','10px')
     logoView.css('top','5px')
 }
 
