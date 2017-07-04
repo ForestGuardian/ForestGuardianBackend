@@ -123,7 +123,7 @@ gem 'activerecord-nulldb-adapter'
 
 # Use bower repository.
 source 'https://rails-assets.org' do
-  gem 'rails-assets-leaflet', '~> 1.0.3'
+  gem 'rails-assets-leaflet', '~> 0.7.7'
   gem 'rails-assets-leaflet-ajax'
   gem 'rails-assets-leaflet-routing-machine'
   gem 'rails-assets-lrm-graphhopper'
