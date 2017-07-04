@@ -534,12 +534,30 @@ function isWindyMap() {
     return $("#windyty").length == 1;
 }
 
+//region UI Cleaning
+
+function hideControls(){
+    $('.leaflet-control-container').hide();
+}
+
+function relocateWindyLogo(){
+    var logoView = $('a.logo')
+    logoView.css( bottom )
+    logoView.css('left','60px')
+    logoView.css('top','5px')
+}
+
 function windytyMain(pMap) {
     map = pMap; //global ref
     initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
-    $('.leaflet-control-container').hide();
+
+    //ui cleaning
+    hideControls();
+    relocateWindyLogo();
 }
+
+//endregion
 
 function defaultMain(){
     //Map where the data will be displayed
