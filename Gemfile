@@ -74,7 +74,7 @@ gem 'bcrypt'
 ### THIRD-PARTY ###
 
 #Mapbox-Rails
-gem 'mapbox-rails'
+# gem 'mapbox-rails'
 
 # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'web-console', group: :development

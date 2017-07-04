@@ -339,7 +339,7 @@ $(function() {
     /* MODIS data layers */
 
     //Data from the backend
-    MODISLayer = L.geoJSON(null, {
+    MODISLayer = L.GeoJSON(null, {
         onEachFeature:onEachFeature
     }).addTo(map);
 
