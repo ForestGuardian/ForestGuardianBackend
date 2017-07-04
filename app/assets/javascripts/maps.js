@@ -229,12 +229,9 @@ function downloadMODISData() {
             try {
                 var geoJSONData = JSON.parse(this.responseText);
 
-                if ( MODISLayer == null ){
-                    MODISLayer = L.GeoJSON.addData(geoJSONData)
-                }else{
-                    MODISLayer.clearLayers();
-                    MODISLayer.addData(geoJSONData);
-                };
+                MODISLayer.clearLayers();
+                MODISLayer.addData(geoJSONData);
+
                 console.log(this.responseText);
             } catch (err) {
                 console.log("Error downloading the MODIS data: " + err);
@@ -331,6 +328,11 @@ $(function() {
     map.on('moveend', function() {
         checkZoomLevel();
     });
+
+    /* MODIS data layers */
+
+    //Data from the backend
+    MODISLayer = new L.GeoJSON.AJAX().addTo(map);
 
     //NASA's WMS service
     var wmsLayer = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
