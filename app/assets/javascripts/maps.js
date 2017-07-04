@@ -542,7 +542,8 @@ function hideControls(){
 
 function relocateWindyLogo(){
     var logoView = $('a.logo')
-    logoView.css( bottom )
+    logoView.css('left','')
+    logoView.css('bottom','')
     logoView.css('left','60px')
     logoView.css('top','5px')
 }
