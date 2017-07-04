@@ -15,7 +15,12 @@ var fireStationIcon;
 var markerIcon;
 var markerArea;
 var reportMarkerLocation = { 'latitude':0.0, 'longitude':0.0 }
-var fg_layers = [];
+var layerCollection ={
+    forest: [],
+    fires: [],
+    weather: [],
+    protected_areas: []
+}
 
 var windytyInit = {
     // Required: API key
@@ -261,17 +266,123 @@ function checkZoomLevel() {
     }
 }
 
-function initializeMapOptions(){
+//region Map Components Initialization
 
-    /* Routing */
-    route = L.Routing.control({
-        waypoints: [],
-        routeWhileDragging: false,
-        createMarker: function() { return null; },
-        router: L.Routing.graphHopper('c06e05f1-cd2f-4c9d-921c-06d634c9c8e9')
-    });
-    route.addTo(map);
+function loadForestlayer(){
+    /* Forest types for Costa Rica */
+    layerCollection.forest.push( L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi18_tipos_bosque_costa_rica_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
+        tms: true
+    }) );
 
+    /* Forest types for Honduras */
+    layerCollection.forest.push( L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi21_tipos_bosque_honduras_2015_v2@EPSG:900913@png/{z}/{x}/{y}.png', {
+        tms: true
+    }) );
+
+    /* Forest types for El Salvador */
+    layerCollection.forest.push( L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi19_tipos_bosque_el_salvador_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
+        tms: true
+    }) );
+
+    /* Forest types for Belice */
+    layerCollection.forest.push( L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi15_tipos_bosque_belice_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
+        tms: true
+    }) );
+}
+
+function loadWindsLayer(){
+
+}
+
+function loadFiresLayer(){
+    //NASA's WMS service
+    layerCollection.fires.push(
+        L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
+            layers:'fires24',
+            transparent: true,
+            format: 'image/png'
+        })
+    )
+}
+
+function loadWeatherLayer(){
+    /* Central America weather perspectives */
+    layerCollection.weather.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+            layers: 'perspectiva_ca_mjj',
+            styles: 'perspectiva_ca_mjj',
+            transparent: true,
+            format: 'image/png'
+        })
+    );
+}
+
+function loadProtectedAreasLayer(){
+    /* Protected areas for Costa Rica */
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi08_areas_prote_costa_rica_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for Honduras*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi11_areas_prote_honduras_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for El Salvador*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi09_areas_prote_salvador_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for Belice*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi07_areas_prote_belice_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for Panama*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi13_areas_prote_panama_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for Guatemala*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi10_areas_prote_guatemala_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for Caribbean*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi01_areas_protegidas_caribe_2008',
+        styles: 'bi01_areas_protegidas_caribe_2008',
+        transparent: true,
+        format: 'image/png'
+    }) );
+
+    /* Protected areas for Nicaragua*/
+    layerCollection.protected_areas.push( L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+        layers:'bi12_areas_prote_nicaragua_2014',
+        styles: 'bi07_areas_prote_belice_2014',
+        transparent: true,
+        format: 'image/png'
+    }) );
+}
+
+function loadIcons(){
     /* Fire station mark */
     fireStationIcon = L.icon({
         iconUrl: '/assets/firemen.png',
@@ -294,131 +405,125 @@ function initializeMapOptions(){
         popupAnchor:  [0, 0]
     });
 
-
     /* Wildfire icon */
-
     fireIcon = L.icon({
         iconUrl: '/assets/fire.png',
         iconSize:     [60, 60],
         iconAnchor:   [30, 60],
         popupAnchor:  [0, -60]
     });
+}
+
+//endregion
+
+
+//region Layers Toggle Display
+
+function hideForestLayer(){
+    layerCollection.forest.forEach( function(layer){
+        layer.removeFrom(map);
+    });
+}
+
+function showForestLayer(){
+    if ( $.isEmptyObject(layerCollection.forest) ){
+        loadWeatherLayer();
+    }
+    layerCollection.forest.forEach( function(layer){
+        layer.addTo(map);
+    });
+}
+
+function hideWindsLayer(){
+    $('.leaflet-overlay-pane').hide();
+    $('a.logo').hide();
+    $('#legend').hide();
+}
+
+function showWindsLayer(){
+    $('.leaflet-overlay-pane').show();
+    $('a.logo').show();
+    $('#legend').show();
+}
+
+function hideFiresLayer(){
+    layerCollection.fires.forEach( function(layer){
+        layer.removeFrom(map);
+    });
+}
+
+function showFiresLayer() {
+    if ( $.isEmptyObject(layerCollection.fires) ){
+        loadWeatherLayer();
+    }
+    layerCollection.fires.forEach( function(layer){
+        layer.addTo(map);
+    });
+}
+
+function hideWeatherLayer(){
+    layerCollection.weather.forEach( function(layer){
+        layer.removeFrom(map);
+    });
+}
+
+function showWeatherLayer(){
+    if ( $.isEmptyObject(layerCollection.weather) ){
+        loadWeatherLayer();
+    }
+    layerCollection.weather.forEach( function(layer){
+        layer.addTo(map);
+    });
+}
+
+function hideProtectedAreasLayer(){
+    layerCollection.protected_areas.forEach( function(layer){
+        layer.removeFrom(map);
+    });
+}
+
+function showProtectedAreasLayer(){
+    if ( $.isEmptyObject(layerCollection.protected_areas) ){
+        loadWeatherLayer();
+    }
+    layerCollection.protected_areas.forEach( function(layer){
+        layer.addTo(map);
+    });
+}
+
+function initializeMapOptions(pMap, pMapView){
+
+    /* Routing */
+    route = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: false,
+        createMarker: function() { return null; },
+        router: L.Routing.graphHopper('c06e05f1-cd2f-4c9d-921c-06d634c9c8e9')
+    });
+    route.addTo(pMap);
+
+    loadIcons();
 
     //Capturing the moveend event from the map
-    map.on('moveend', function() {
+    pMap.on('moveend', function() {
         checkZoomLevel();
     });
-
-    /* MODIS data layers */
 
     //Data from the backend
     MODISLayer = new L.GeoJSON(null, {
         onEachFeature:onEachFeature
-    }).addTo(map);
+    }).addTo(pMap);
 
-    //NASA's WMS service
-    var wmsLayer = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
-        layers:'fires24',
-        transparent: true,
-        format: 'image/png'
-    }).addTo(map);
+    showFiresLayer();
 
-
-
-    if ( $('#map').hasClass("weather_perspective") ){
-        /* Central America weather perspectives */
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers: 'perspectiva_ca_mjj',
-            styles: 'perspectiva_ca_mjj',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
+    if ( pMapView.hasClass("weather_perspective") ){
+        showWeatherLayer();
     };
-    if ( $('#map').hasClass("forests") ){
-        /* Forest types for Costa Rica */
-        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi18_tipos_bosque_costa_rica_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-            tms: true
-        }).addTo(map);
-
-        /* Forest types for Honduras */
-        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi21_tipos_bosque_honduras_2015_v2@EPSG:900913@png/{z}/{x}/{y}.png', {
-            tms: true
-        }).addTo(map);
-
-        /* Forest types for El Salvador */
-        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi19_tipos_bosque_el_salvador_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-            tms: true
-        }).addTo(map);
-
-        /* Forest types for Belice */
-        var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi15_tipos_bosque_belice_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-            tms: true
-        }).addTo(map);
+    if ( pMapView.hasClass("forests") ){
+        showForestLayer();
     };
-    if ( $('#map').hasClass("protected_areas") ){
-        /* Protected areas for Costa Rica */
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi08_areas_prote_costa_rica_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for Honduras*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi11_areas_prote_honduras_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for El Salvador*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi09_areas_prote_salvador_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for Belice*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi07_areas_prote_belice_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for Panama*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi13_areas_prote_panama_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for Guatemala*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi10_areas_prote_guatemala_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for Caribbean*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi01_areas_protegidas_caribe_2008',
-            styles: 'bi01_areas_protegidas_caribe_2008',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
-
-        /* Protected areas for Nicaragua*/
-        var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-            layers:'bi12_areas_prote_nicaragua_2014',
-            styles: 'bi07_areas_prote_belice_2014',
-            transparent: true,
-            format: 'image/png'
-        }).addTo(map);
+    if ( pMapView.hasClass("protected_areas") ){
+        showProtectedAreasLayer();
     };
 
 }
@@ -428,9 +533,10 @@ function isWindyMap() {
 }
 
 function windytyMain(pMap) {
-    map = pMap;
-    initializeMapOptions();
+    map = pMap; //global ref
+    initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
+    $('.leaflet-control-container').hide();
 }
 
 function defaultMain(){
@@ -447,7 +553,7 @@ $(function() {
 
     if ( !isWindyMap() ) {
         defaultMain();
-        initializeMapOptions();
+        initializeMapOptions( map, $('#map') );
         downloadMODISData();
     }
 });
