@@ -429,7 +429,7 @@ function loadIcons(){
 
 function hideForestLayer(){
     layerCollection.forest.forEach( function(layer){
-        layer.removeFrom(map);
+        map.removeLayer(layer);
     });
 }
 
@@ -455,7 +455,7 @@ function showWindsLayer(){
 
 function hideFiresLayer(){
     layerCollection.fires.forEach( function(layer){
-        layer.removeFrom(map);
+        map.removeLayer(layer);
     });
 }
 
@@ -468,7 +468,7 @@ function showFiresLayer() {
 
 function hideWeatherLayer(){
     layerCollection.weather.forEach( function(layer){
-        layer.removeFrom(map);
+        map.removeLayer(layer);
     });
 }
 
@@ -482,7 +482,7 @@ function showWeatherLayer(){
 
 function hideProtectedAreasLayer(){
     layerCollection.protected_areas.forEach( function(layer){
-        layer.removeFrom(map);
+        map.removeLayer(layer);
     });
 }
 
