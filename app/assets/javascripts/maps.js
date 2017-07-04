@@ -228,9 +228,14 @@ function downloadMODISData() {
         if (this.readyState === 4) {
             try {
                 var geoJSONData = JSON.parse(this.responseText);
-                MODISLayer.clearLayers();
+
+                if ( MODISLayer == null ){
+                    MODISLayer = L.GeoJSON.addData(geoJSONData)
+                }else{
+                    MODISLayer.clearLayers();
+                    MODISLayer.addData(geoJSONData);
+                };
                 console.log(this.responseText);
-                MODISLayer.addData(geoJSONData);
             } catch (err) {
                 console.log("Error downloading the MODIS data: " + err);
             }
