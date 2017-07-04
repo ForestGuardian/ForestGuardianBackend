@@ -17,6 +17,16 @@ var markerArea;
 var reportMarkerLocation = { 'latitude':0.0, 'longitude':0.0 }
 var fg_layers = [];
 
+var windytyInit = {
+    // Required: API key
+    key: 'pBEnvSWfnXaWpNC',
+
+    // Optional: Initial state of the map
+    lat: 10.07568504578726,
+    lon: -84.31182861328125,
+    zoom: 8,
+}
+
 /* Interface function with the client app */
 
 //@function displayWildfiresDetails
@@ -247,6 +257,27 @@ function checkZoomLevel() {
         console.log("MODISLayer clear layer");
         MODISLayer.clearLayers();
     }
+}
+
+function windytyMain(map) {
+    map.options.maxZoom = 11;
+
+    var fireIcon = L.icon({
+        iconUrl: 'fire.png',
+        iconSize:     [32, 37],
+        iconAnchor:   [16, 36]
+    });
+
+    var geojsonLayer = new L.GeoJSON.AJAX("http://forestdev6339.cloudapp.net/Leaflet/central_america.json", {
+        middleware:function(data){
+            return L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.setIcon(fireIcon);
+                }
+            }).addTo(map);
+        }
+    });
+    geojsonLayer.addTo(map);
 }
 
 $(function() {
