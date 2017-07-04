@@ -332,7 +332,9 @@ $(function() {
     /* MODIS data layers */
 
     //Data from the backend
-    MODISLayer = new L.GeoJSON.AJAX().addTo(map);
+    MODISLayer = new L.GeoJSON(null, {
+        onEachFeature:onEachFeature
+    }).addTo(map);
 
     //NASA's WMS service
     var wmsLayer = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
