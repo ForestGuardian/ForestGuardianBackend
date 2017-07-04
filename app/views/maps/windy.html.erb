@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Forest Guardian</title>
-    <link rel="stylesheet" href="maptest.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
-    <script type="text/javascript" src="leaflet.ajax.js"></script>
+
+    <%= javascript_include_tag  'fg_mobile' %>
+    <%= stylesheet_link_tag 'fg_mobile', media: 'all' %>
 </head>
+
 <body>
 <div id="windyty"></div>
 <script async defer src="https://api.windytv.com/v2.3/boot.js"></script>
 </body>
+
 </html>
