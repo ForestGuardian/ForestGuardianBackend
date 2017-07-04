@@ -542,10 +542,14 @@ function hideControls(){
 
 function relocateWindyLogo(){
     var logoView = $('a.logo')
-    logoView.css('left','')
-    logoView.css('bottom','')
-    logoView.css('right','10px')
-    logoView.css('top','5px')
+    logoView.css(
+        {
+            'right': '10px',
+            'top': '5px',
+            'left': 'initial',
+            'bottom': 'initial'
+        }
+    )
 }
 
 function windytyMain(pMap) {
