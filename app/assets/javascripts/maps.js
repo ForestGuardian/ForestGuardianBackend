@@ -339,9 +339,16 @@ $(function() {
     /* MODIS data layers */
 
     //Data from the backend
-    MODISLayer = L.GeoJSON(null, {
-        onEachFeature:onEachFeature
-    }).addTo(map);
+    MODISLayer = new L.GeoJSON.AJAX("http://forestdev6339.cloudapp.net/Leaflet/central_america.json", {
+        middleware:function(data){
+            return L.geoJson(data, {
+                onEachFeature: function (feature, layer) {
+                    layer.setIcon(fireIcon);
+                }
+            }).addTo(map);
+        }
+    });
+    MODISLayer.addTo(map);
 
     //NASA's WMS service
     var wmsLayer = L.tileLayer.wms('https://firms.modaps.eosdis.nasa.gov/wms/c6?', {
