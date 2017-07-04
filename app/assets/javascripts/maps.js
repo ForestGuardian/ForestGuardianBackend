@@ -261,27 +261,7 @@ function checkZoomLevel() {
     }
 }
 
-function windytyMain(map) {
-    map.options.maxZoom = 11;
-
-    var fireIcon = L.icon({
-        iconUrl: 'fire.png',
-        iconSize:     [32, 37],
-        iconAnchor:   [16, 36]
-    });
-
-    downloadMODISData();
-}
-
-$(function() {
-    //Map where the data will be displayed
-    map = L.map('map').setView([10.07568504578726, -84.31182861328125], 8);
-    //Some setting to the general map
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
- 	    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
- 	    maxZoom: 18
-    }).addTo(map);
-
+function initializeMapOptions(){
 
     /* Routing */
     route = L.Routing.control({
@@ -344,6 +324,7 @@ $(function() {
     }).addTo(map);
 
 
+
     if ( $('#map').hasClass("weather_perspective") ){
         /* Central America weather perspectives */
         var wmsLayer = L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
@@ -356,22 +337,22 @@ $(function() {
     if ( $('#map').hasClass("forests") ){
         /* Forest types for Costa Rica */
         var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi18_tipos_bosque_costa_rica_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-          tms: true
+            tms: true
         }).addTo(map);
 
         /* Forest types for Honduras */
         var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi21_tipos_bosque_honduras_2015_v2@EPSG:900913@png/{z}/{x}/{y}.png', {
-          tms: true
+            tms: true
         }).addTo(map);
 
         /* Forest types for El Salvador */
         var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi19_tipos_bosque_el_salvador_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-          tms: true
+            tms: true
         }).addTo(map);
 
         /* Forest types for Belice */
         var wmsLayer = L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi15_tipos_bosque_belice_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-          tms: true
+            tms: true
         }).addTo(map);
     };
     if ( $('#map').hasClass("protected_areas") ){
@@ -440,4 +421,33 @@ $(function() {
         }).addTo(map);
     };
 
+}
+
+function isWindyMap() {
+    return $("#windyty").length == 1;
+}
+
+function windytyMain(pMap) {
+    map = pMap;
+    initializeMapOptions();
+    downloadMODISData();
+}
+
+function defaultMain(){
+    //Map where the data will be displayed
+    map = L.map('map').setView([10.07568504578726, -84.31182861328125], 8);
+    //Some setting to the general map
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+        maxZoom: 18
+    }).addTo(map);
+}
+
+$(function() {
+
+    if ( !isWindyMap() ) {
+        defaultMain();
+        initializeMapOptions();
+        downloadMODISData();
+    }
 });
