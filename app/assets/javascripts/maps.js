@@ -554,6 +554,7 @@ function relocateWindyLogo(){
 
 function windytyMain(pMap) {
     map = pMap; //global ref
+    setBaseMap(map);
     initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
 
@@ -562,16 +563,20 @@ function windytyMain(pMap) {
     relocateWindyLogo();
 }
 
+function setBaseMap(pMap){
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+        maxZoom: 18
+    }).addTo(pMap);
+}
+
 //endregion
 
 function defaultMain(){
     //Map where the data will be displayed
     map = L.map('map').setView([10.07568504578726, -84.31182861328125], 8);
     //Some setting to the general map
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-        maxZoom: 18
-    }).addTo(map);
+    setBaseMap(map);
 }
 
 $(function() {
