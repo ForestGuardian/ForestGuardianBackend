@@ -541,7 +541,7 @@ function hideControls(){
 }
 
 function relocateWindyLogo(){
-    var logoView = $('a.logo')
+    var logoView = $('a.logo');
     logoView.css(
         {
             'right': '10px',
@@ -549,7 +549,19 @@ function relocateWindyLogo(){
             'left': 'initial',
             'bottom': 'initial'
         }
-    )
+    );
+}
+
+function relocateLegend(){
+    var legendView = $('#legend');
+    legendView.css(
+        {
+            'right': '0px',
+            'top': '50px',
+            'left': 'initial',
+            'bottom': 'initial'
+        }
+    );
 }
 
 function windytyMain(pMap) {
@@ -561,6 +573,7 @@ function windytyMain(pMap) {
     //ui cleaning
     hideControls();
     relocateWindyLogo();
+    relocateLegend();
 }
 
 function setBaseMap(pMap){
