@@ -416,9 +416,9 @@ function loadIcons(){
     /* Wildfire icon */
     fireIcon = L.icon({
         iconUrl: '/assets/fire.png',
-        iconSize:     [60, 60],
-        iconAnchor:   [30, 60],
-        popupAnchor:  [0, -60]
+        iconSize:     [60, 103],
+        iconAnchor:   [30, 52],
+        popupAnchor:  [0, -52]
     });
 }
 
