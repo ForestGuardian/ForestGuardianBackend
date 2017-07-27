@@ -32,6 +32,9 @@ class ReportsController < ApplicationController
     @report.author = current_user
     @report.picture = params[:picture]
 
+    #TODO: Send notifications
+    
+
     respond_to do |format|
       if @report.save
         format.html { redirect_to @report, notice: 'Report was successfully created.' }
