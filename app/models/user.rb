@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def is_device_registered?
-    not self.firebase_registration_token.empty?
+    not self.firebase_registration_token.nil?
   end
 
 end
