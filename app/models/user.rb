@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
     ], methods: :avatar)
   end
 
+  def is_device_registered?
+    not self.firebase_registration_token.empty?
+  end
+
 end

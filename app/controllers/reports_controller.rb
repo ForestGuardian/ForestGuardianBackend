@@ -32,11 +32,11 @@ class ReportsController < ApplicationController
     @report.author = current_user
     @report.picture = params[:picture]
 
-    #TODO: Send notifications
-    
-
     respond_to do |format|
       if @report.save
+
+        FirebaseCloudMessaging::send_new_report_notification( User.all, @report )
+
         format.html { redirect_to @report, notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
