@@ -9,7 +9,7 @@ class FirebaseCloudMessaging
     NotificationsJob.perform_later(to, {
         event: 'report_created',
         report: report.id,
-        name: report.name
+        title: report.title
     })
   end
 
