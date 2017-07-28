@@ -4,7 +4,7 @@ class NotificationsJob < ActiveJob::Base
   require 'uri'
   require 'json'
 
-  def self.send_push_notification(to,message)
+  def send_push_notification(to,message)
     uri = URI.parse("https://fcm.googleapis.com/fcm/send")
     http = Net::HTTP.new(uri.host,uri.port)
     http.use_ssl =true
@@ -27,7 +27,7 @@ class NotificationsJob < ActiveJob::Base
   def perform(users,message)
       users.map{ |id| User.find(id)  }.each do |user|
         if user.is_device_registered?
-          self.send_push_notification(user.firebase_registration_token, message)
+          send_push_notification(user.firebase_registration_token, message)
         end
       end
   end
