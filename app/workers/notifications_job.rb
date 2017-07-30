@@ -13,7 +13,7 @@ class NotificationsJob < ActiveJob::Base
     request['Content-Type'] = 'application/json'
     request['Authorization'] = 'key=AAAAorGop6w:APA91bHOvtkg8P9Hyfge08N_jl5hJN2iT7ba1-8qhLFFYY6XbMmpTmF-lwLj9e7pWVh_3b4Kom5XcGsFOEOHHLfaxMWw2BZbHmevDgJnMG_IOj0bg3xJ_50hzQWIFQ4259MzXtk03Kww'
     request.body = {
-        data: message,
+        notification: message,
         to: to
     }.to_json
 
