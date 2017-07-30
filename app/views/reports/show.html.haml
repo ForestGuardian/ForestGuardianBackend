@@ -19,6 +19,10 @@
   %b Closed:
   = @reporte.closed
 
+%p
+  %b Location Name:
+  = @reporte.location_name
+
 = link_to 'Edit', edit_report_path(@reporte)
 \|
 = link_to 'Back', reports_path

@@ -9,6 +9,7 @@
       %th Geo longitude
       %th Author
       %th Closed
+      %th Location Name
       %th
       %th
       %th
@@ -22,6 +23,7 @@
         %td= reporte.geo_longitude
         %td= reporte.author
         %td= reporte.closed
+        %td= reporte.location_name
         %td= link_to 'Show', reporte
         %td= link_to 'Edit', edit_report_path(reporte)
         %td= link_to 'Destroy', reporte, :method => :delete, :data => { :confirm => 'Are you sure?' }
