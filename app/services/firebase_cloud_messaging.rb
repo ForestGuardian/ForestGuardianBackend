@@ -11,7 +11,8 @@ class FirebaseCloudMessaging
         event: 'report_created',
         report: report.id,
         title: report.title,
-        location_name: report.location_name
+        location_name: report.location_name,
+        author_name: report.author.name
     })
   end
 
