@@ -591,7 +591,7 @@ function overrideWindyMetrics(){
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
-    overrideWindyMetrics();
+    // overrideWindyMetrics();
 
     initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
