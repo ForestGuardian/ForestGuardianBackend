@@ -565,14 +565,7 @@ function relocateLegend(){
 }
 
 function overrideWindyMetrics(){
-    var metrics = ['km/h'],
-        actual = 0;
-
-    setInterval(function(){
-        actual++;
-        if(actual > metrics.length) actual = 0;
-        W.overlays.wind.setMetric( metrics[ actual ] );
-    },2000)
+    W.overlays.wind.setMetric( 'km/h' );
 }
 
 function windytyMain(pMap) {
