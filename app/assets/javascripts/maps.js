@@ -565,6 +565,20 @@ function relocateLegend(){
 }
 
 function overrideWindyMetrics(){
+    // Observe for changes on legend to be sure that is placed correctly
+    // https://stackoverflow.com/questions/43622161/javascript-callback-function-when-an-elements-attributes-change
+    var legend = document.getElementById('legend');
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            console.log("legend is changing!"); // run some change when the style is mutated
+            relocateLegend();
+        });
+    });
+    observer.observe(legend, {
+        attributes: true
+    });
+
+    // Change metric
     W.overlays.wind.setMetric( 'km/h' );
 }
 
