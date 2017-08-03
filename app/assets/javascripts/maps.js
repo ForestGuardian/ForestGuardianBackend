@@ -564,6 +564,12 @@ function relocateLegend(){
     );
 }
 
+function overrideUI(){
+    hideControls();
+    relocateWindyLogo();
+    relocateLegend();
+}
+
 function overrideWindyMetrics(){
     // Observe for changes on legend to be sure that is placed correctly
     // https://stackoverflow.com/questions/43622161/javascript-callback-function-when-an-elements-attributes-change
@@ -571,7 +577,7 @@ function overrideWindyMetrics(){
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             console.log("legend is changing!"); // run some change when the style is mutated
-            relocateLegend();
+            overrideUI();
         });
     });
     observer.observe(legend, {
@@ -591,9 +597,7 @@ function windytyMain(pMap) {
     downloadMODISData();
 
     //ui cleaning
-    hideControls();
-    relocateWindyLogo();
-    relocateLegend();
+    overrideUI();
 }
 
 function setBaseMap(pMap){
