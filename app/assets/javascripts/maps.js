@@ -564,22 +564,9 @@ function relocateLegend(){
     );
 }
 
-function overrideWindyMetrics(){
-    var metrics = ['km/h'],
-        actual = 0;
-
-    setInterval(function(){
-        actual++;
-        if(actual > metrics.length) actual = 0;
-        W.overlays.wind.setMetric( metrics[ actual ] );
-    },2000)
-}
-
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
-    overrideWindyMetrics();
-
     initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
 
