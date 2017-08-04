@@ -25,7 +25,7 @@ class NotificationsJob < ActiveJob::Base
 
 
   # @param [Array<User>] users
-  def perform(users,message)
+  def perform(users,message, data)
       users.map{ |id| User.find(id)  }.each do |user|
         if user.is_device_registered?
           send_push_notification(user.firebase_registration_token, message, data)
