@@ -15,10 +15,14 @@ class User < ActiveRecord::Base
   }
   validates_attachment_content_type :avatar, :content_type => %w(image/jpg image/jpeg image/png image/gif)
 
-  def token_validation_response
-    self.as_json(except: [
-        :tokens, :created_at, :updated_at
-    ], methods: :avatar)
+  def avatar_url
+    avatar.url(:thumb)
+  end
+
+  def as_json(options = { })
+    super((options || { }).merge({
+         :methods => [:avatar_url]
+     }))
   end
 
   def is_device_registered?
