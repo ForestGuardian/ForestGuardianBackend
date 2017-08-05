@@ -12,20 +12,28 @@ ActiveAdmin.register Report do
 #   permitted
 # end
 
-  # index do
-  #   selectable_column
-  #   id_column
-  #   column 'Picture', sortable: :picture_file_name do |report| link_to report.picture.name, report.picture.url end
-  #   column :picture_file_size, sortable: :picture_file_size do |firmware| "#{firmware.picture_file_size / 1024} KB" end
-  #   column :created_at
-  #   actions
-  # end
-  #
-  # form do |f|
-  #   f.inputs "Upload" do
-  #     f.input :picture, required: true, as: :file
-  #   end
-  #   f.actions
-  # end
+  index do
+    selectable_column
+    id_column
+    column :title
+    column :author
+    column :geo_latitude
+    column :geo_longitude
+    column :location_name
+    column 'Picture', sortable: :picture_file_name do |report| link_to report.picture.name, report.picture.url end
+    column :created_at
+    actions
+  end
+
+  form do |f|
+    f.inputs "Upload" do
+      f.input :title
+      f.input :author
+      f.input :geo_latitude
+      g.input :geo_longitude
+      f.input :picture, required: true, as: :file
+    end
+    f.actions
+  end
 
 end
