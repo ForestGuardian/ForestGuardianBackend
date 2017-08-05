@@ -112,6 +112,8 @@ function mobileShowDetails() {
 //@param {double} latitudeB of the point B
 //@param {double} longitudeB of the point B
 function setRouteFromTwoPoints(latitudeA, longitudeA, latitudeB, longitudeB) {
+    console.log("Point A: latitude = " + latitudeA + ", longitude = " + longitudeA);
+    console.log("Point B: latitude = " + latitudeB + ", longitude = " + longitudeB);
     route.setWaypoints([
         L.latLng(latitudeA, longitudeA),
         L.latLng(latitudeB, longitudeB)
@@ -420,8 +422,8 @@ function loadIcons(){
     /* Wildfire icon */
     fireIcon = L.icon({
         iconUrl: '/assets/fire.png',
-        iconSize:     [35, 60],
-        iconAnchor:   [17, 30],
+        iconSize:     [36, 60],
+        iconAnchor:   [18, -30],
         popupAnchor:  [0, -30]
     });
 }
