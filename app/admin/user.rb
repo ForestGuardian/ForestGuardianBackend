@@ -11,6 +11,7 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  permit_params :email, :name, :avatar
 
   index do
     selectable_column
@@ -20,7 +21,7 @@ ActiveAdmin.register User do
     column :last_sign_in_ip
     column :email
     column :name
-    column 'Avatar', sortable: :picture_file_name do |user| link_to user.avatar.name, user.avatar.url end
+    column 'Avatar', sortable: :avatar_file_name do |user| link_to user.avatar.name, user.avatar.url end
     column :created_at
     actions
   end
