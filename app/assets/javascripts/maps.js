@@ -423,8 +423,8 @@ function loadIcons(){
     /* Wildfire icon */
     fireIcon = L.icon({
         iconUrl: '/assets/fire.png',
-        iconSize:     [35, 60],
-        iconAnchor:   [17, 30],
+        iconSize:     [36, 60],
+        iconAnchor:   [18, -30],
         popupAnchor:  [0, -30]
     });
 }
