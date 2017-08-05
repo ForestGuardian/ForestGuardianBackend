@@ -12,4 +12,16 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
+  index do
+    selectable_column
+    id_column
+    column :provider
+    column :last_sign_in_at
+    column :last_sign_in_ip
+    column :email
+    column :name
+    column :created_at
+    actions
+  end
+
 end
