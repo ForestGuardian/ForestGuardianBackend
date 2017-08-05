@@ -30,7 +30,8 @@ ActiveAdmin.register Report do
       f.input :title
       f.input :author
       f.input :geo_latitude
-      g.input :geo_longitude
+      f.input :geo_longitude
+      f.input :location_name
       f.input :picture, required: true, as: :file
     end
     f.actions
