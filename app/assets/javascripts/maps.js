@@ -126,7 +126,7 @@ function removeRoute() {
 
 function addReportLocation(){
 
-    var center = L.getBounds().getCenter();
+    var center = map.getBounds().getCenter();
     console.log(center);
 
     // Initialize marker if null
@@ -242,7 +242,6 @@ function downloadMODISData() {
                 MODISLayer.clearLayers();
                 MODISLayer.addData(geoJSONData);
 
-                console.log(this.responseText);
             } catch (err) {
                 console.log("Error downloading the MODIS data: " + err);
             }
