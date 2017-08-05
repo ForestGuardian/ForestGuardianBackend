@@ -12,4 +12,19 @@ ActiveAdmin.register Report do
 #   permitted
 # end
 
+  index do
+    selectable_column
+    id_column
+    column 'Picture', sortable: :image_file_name do |report| link_to report.picture.name, report.image.url end
+    column :created_at
+    actions
+  end
+
+  form do |f|
+    f.inputs "Upload" do
+      f.input :picture, required: true, as: :file
+    end
+    f.actions
+  end
+
 end
