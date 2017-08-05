@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    format.json { render @user.to_json, status: :ok }
+    format.json { render json: @user.to_json, status: :ok }
   end
 
   # GET /users/new
