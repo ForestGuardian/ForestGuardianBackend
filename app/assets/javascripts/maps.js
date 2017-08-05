@@ -15,6 +15,7 @@ var fireStationIcon;
 var markerIcon;
 var markerArea;
 var reportMarkerLocation = { 'latitude':0.0, 'longitude':0.0 }
+var currentLocation = { 'latitude':10.07568504578726, 'longitude': -84.31182861328125 }
 var layerCollection ={
     forest: [],
     fires: [],
@@ -74,20 +75,24 @@ function displayWildfiresDetails(lat, lng, brightness, scan, track, adquisitionT
 //@param {double} longitude
 function setUserCurrentLocation(latitude, longitude) {
 
-    // Center map on Location
-    map.setView(L.latLng(latitude, longitude), 8);
-
     // Initialize marker if null
     if ( gpsMarker == null ){
         gpsMarker = L.marker([latitude, longitude], {icon: markerIcon});
         gpsMarker.addTo(map);
     }
 
+    currentLocation.latitude = latitude;
+    currentLocation.longitude = longitude;
+
     try {
         mobile.notifyCurrentLocation();
     } catch (err) {
         console.log("Error trying to invoke mobile method");
     }
+}
+
+function moveToUserCurrentLocation(){
+    map.setView(L.latLng(currentLocation.latitude, currentLocation.longitude), 8);
 }
 
 //@function mobileShowDetails
