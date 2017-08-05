@@ -26,7 +26,7 @@ ActiveAdmin.register Report do
   end
 
   form do |f|
-    f.inputs "Upload" do
+    f.inputs "Report" do
       f.input :title
       f.input :author, required: true
       f.input :geo_latitude

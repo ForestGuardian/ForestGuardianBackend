@@ -20,8 +20,18 @@ ActiveAdmin.register User do
     column :last_sign_in_ip
     column :email
     column :name
+    column 'Avatar', sortable: :picture_file_name do |user| link_to user.avatar.name, user.avatar.url end
     column :created_at
     actions
+  end
+
+  form do |f|
+    f.inputs "User" do
+      f.input :email, required: true
+      f.input :name, required: true
+      f.input :avatar, required: true, as: :file
+    end
+    f.actions
   end
 
 end
