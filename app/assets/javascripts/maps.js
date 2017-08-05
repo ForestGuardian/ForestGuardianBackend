@@ -126,7 +126,7 @@ function removeRoute() {
 
 function addReportLocation(){
 
-    var center = map.getCenter();
+    var center = map.getBounds().getCenter();
 
     // Initialize marker if null
     if ( reportMarker == null ){
