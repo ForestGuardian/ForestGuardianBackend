@@ -15,7 +15,8 @@ ActiveAdmin.register Report do
   index do
     selectable_column
     id_column
-    column 'Picture', sortable: :image_file_name do |report| link_to report.picture.name, report.image.url end
+    column 'Picture', sortable: :picture_file_name do |report| link_to report.picture.name, report.picture.url end
+    column :picture_file_size, sortable: :picture_file_size do |firmware| "#{firmware.picture_file_size / 1024} KB" end
     column :created_at
     actions
   end
