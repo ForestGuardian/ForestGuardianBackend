@@ -152,3 +152,4 @@ gem 'aws-sdk-v1'
 #### ADMIN #####
 
 gem 'activeadmin'
+gem 'active_material', github: 'vigetlabs/active_material'
