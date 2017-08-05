@@ -11,7 +11,7 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :email, :name, :avatar
+  permit_params :email, :name, :avatar, :password
 
   index do
     selectable_column
@@ -31,6 +31,7 @@ ActiveAdmin.register User do
       f.input :email, required: true
       f.input :name, required: true
       f.input :avatar, required: true, as: :file
+      f.input :password
     end
     f.actions
   end
