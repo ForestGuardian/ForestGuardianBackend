@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'users', skip: [:omniauth_callbacks]
-      resources :users, only: [:show]
     end
   end
+
+  resources :users, only: [:show]
 
   # map views
   get 'maps/fires' => 'maps#fires'
