@@ -505,7 +505,7 @@ function initializeMapOptions(pMap, pMapView){
         waypoints: [],
         routeWhileDragging: false,
         createMarker: function() { return null; },
-        router: L.Routing.graphHopper('c06e05f1-cd2f-4c9d-921c-06d634c9c8e9')
+        router: L.Routing.mapbox('pk.eyJ1IjoibHVtdXJpbGxvIiwiYSI6IlVRTlZkbFkifQ.nFkWwVMJm_5mUy-9ye65Og')
     });
     route.addTo(pMap);
 

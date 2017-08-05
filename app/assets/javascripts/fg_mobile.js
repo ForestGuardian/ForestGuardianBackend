@@ -14,5 +14,4 @@
 //= require leaflet
 //= require leaflet-ajax
 //= require leaflet-routing-machine
-//= require lrm-graphhopper
 //= require maps
