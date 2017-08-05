@@ -127,11 +127,12 @@ function removeRoute() {
 function addReportLocation(){
 
     var center = map.getBounds().getCenter();
-    console.log(center);
+    var latitude = center.latitude;
+    var longitude = center.longitude;
 
     // Initialize marker if null
     if ( reportMarker == null ) {
-        reportMarker = L.marker([center.latitude, center.longitude], {icon: markerArea, draggable: 'true'});
+        reportMarker = L.marker([latitude, longitude], {icon: markerArea, draggable: 'true'});
         reportMarker.addTo(map);
         reportMarker.on("dragend",function(ev){
             var position = ev.target.getLatLng();
@@ -142,8 +143,8 @@ function addReportLocation(){
         });
     }
 
-    reportMarkerLocation.latitude = center.latitude;
-    reportMarkerLocation.longitude = center.longitude;
+    reportMarkerLocation.latitude = latitude;
+    reportMarkerLocation.longitude = longitude;
     console.log("latitude: " + reportMarkerLocation.latitude);
     console.log("longitude: " + reportMarkerLocation.longitude);
 }
