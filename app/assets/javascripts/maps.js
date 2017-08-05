@@ -92,7 +92,7 @@ function setUserCurrentLocation(latitude, longitude) {
 }
 
 function moveToUserCurrentLocation(){
-    map.setView(L.latLng(currentLocation.latitude, currentLocation.longitude), 8);
+    map.setView(L.latLng(currentLocation.latitude, currentLocation.longitude));
 }
 
 //@function mobileShowDetails
