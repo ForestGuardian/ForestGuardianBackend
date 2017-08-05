@@ -29,4 +29,10 @@ class User < ActiveRecord::Base
     not self.firebase_registration_token.nil?
   end
 
+  # ActiveAdmin display name
+  # http://github-docs.activeadmin.info/3-index-pages/index-as-table.html
+  def display_name
+    "#{name} (#{email})"
+  end
+
 end

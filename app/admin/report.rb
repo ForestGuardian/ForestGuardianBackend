@@ -28,7 +28,7 @@ ActiveAdmin.register Report do
   form do |f|
     f.inputs "Upload" do
       f.input :title
-      f.input :author
+      f.input :author, required: true
       f.input :geo_latitude
       f.input :geo_longitude
       f.input :location_name
