@@ -92,7 +92,7 @@ function setUserCurrentLocation(latitude, longitude) {
 }
 
 function moveToUserCurrentLocation(){
-    map.setView(L.latLng(currentLocation.latitude, currentLocation.longitude), 8);
+    map.setView(L.latLng(currentLocation.latitude, currentLocation.longitude));
 }
 
 //@function mobileShowDetails
@@ -126,19 +126,16 @@ function removeRoute() {
     route.setWaypoints([]);
 }
 
-function addReportLocation( latitude, longitude ){
+function addReportLocation(){
 
-    // Center map on Location
-    map.setView(L.latLng(latitude, longitude), 8);
+    var center = map.getBounds().getCenter();
+    var latitude = center.lat;
+    var longitude = center.lng;
 
     // Initialize marker if null
-    if ( reportMarker == null ){
-        reportMarker = L.marker([latitude, longitude], {icon: markerArea, draggable:'true'});
-        reportMarkerLocation.latitude = latitude;
-        reportMarkerLocation.longitude = longitude;
+    if ( reportMarker === null || reportMarker === undefined ) {
+        reportMarker = L.marker([latitude, longitude], {icon: markerArea, draggable: 'true'});
         reportMarker.addTo(map);
-        console.log("latitude: " + reportMarkerLocation.latitude);
-        console.log("longitude: " + reportMarkerLocation.longitude);
         reportMarker.on("dragend",function(ev){
             var position = ev.target.getLatLng();
             reportMarkerLocation.latitude = position.lat;
@@ -147,6 +144,11 @@ function addReportLocation( latitude, longitude ){
             console.log("longitude: " + reportMarkerLocation.longitude);
         });
     }
+
+    reportMarkerLocation.latitude = latitude;
+    reportMarkerLocation.longitude = longitude;
+    console.log("latitude: " + reportMarkerLocation.latitude);
+    console.log("longitude: " + reportMarkerLocation.longitude);
 }
 
 function clearReportLocation(){
@@ -244,7 +246,6 @@ function downloadMODISData() {
                 MODISLayer.clearLayers();
                 MODISLayer.addData(geoJSONData);
 
-                console.log(this.responseText);
             } catch (err) {
                 console.log("Error downloading the MODIS data: " + err);
             }
@@ -598,13 +599,10 @@ function overrideWindyMetrics(){
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
-    // overrideWindyMetrics();
-
     initializeMapOptions(pMap, $('#windyty') );
-    downloadMODISData();
-
-    //ui cleaning
     overrideUI();
+    downloadMODISData();
+    overrideWindyMetrics();
 }
 
 function setBaseMap(pMap){
