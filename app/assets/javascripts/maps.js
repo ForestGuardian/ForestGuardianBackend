@@ -112,6 +112,8 @@ function mobileShowDetails() {
 //@param {double} latitudeB of the point B
 //@param {double} longitudeB of the point B
 function setRouteFromTwoPoints(latitudeA, longitudeA, latitudeB, longitudeB) {
+    console.log("Point A: latitude = " + latitudeA + ", longitude = " + longitudeA);
+    console.log("Point B: latitude = " + latitudeB + ", longitude = " + longitudeB);
     route.setWaypoints([
         L.latLng(latitudeA, longitudeA),
         L.latLng(latitudeB, longitudeB)
