@@ -130,13 +130,9 @@ function addReportLocation(){
     console.log(center);
 
     // Initialize marker if null
-    if ( reportMarker == null ){
-        reportMarker = L.marker([center.latitude, center.longitude], {icon: markerArea, draggable:'true'});
-        reportMarkerLocation.latitude = center.latitude;
-        reportMarkerLocation.longitude = center.longitude;
+    if ( reportMarker == null ) {
+        reportMarker = L.marker([center.latitude, center.longitude], {icon: markerArea, draggable: 'true'});
         reportMarker.addTo(map);
-        console.log("latitude: " + reportMarkerLocation.latitude);
-        console.log("longitude: " + reportMarkerLocation.longitude);
         reportMarker.on("dragend",function(ev){
             var position = ev.target.getLatLng();
             reportMarkerLocation.latitude = position.lat;
@@ -145,6 +141,11 @@ function addReportLocation(){
             console.log("longitude: " + reportMarkerLocation.longitude);
         });
     }
+
+    reportMarkerLocation.latitude = center.latitude;
+    reportMarkerLocation.longitude = center.longitude;
+    console.log("latitude: " + reportMarkerLocation.latitude);
+    console.log("longitude: " + reportMarkerLocation.longitude);
 }
 
 function clearReportLocation(){
