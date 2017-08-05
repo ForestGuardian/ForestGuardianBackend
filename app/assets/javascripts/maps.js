@@ -591,13 +591,13 @@ function overrideWindyMetrics(){
     });
 
     // Change metric
-    W.overlays.wind.setMetric( 'km/h' );
+    W.overlays.wind.setMetric( 'kt' );
 }
 
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
-    // overrideWindyMetrics();
+    overrideWindyMetrics();
 
     initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
