@@ -424,7 +424,7 @@ function loadIcons(){
     fireIcon = L.icon({
         iconUrl: '/assets/fire.png',
         iconSize:     [36, 60],
-        iconAnchor:   [18, -30],
+        iconAnchor:   [18, 0],
         popupAnchor:  [0, -30]
     });
 }
