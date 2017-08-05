@@ -124,16 +124,15 @@ function removeRoute() {
     route.setWaypoints([]);
 }
 
-function addReportLocation( latitude, longitude ){
+function addReportLocation(){
 
-    // Center map on Location
-    map.setView(L.latLng(latitude, longitude), 8);
+    var center = map.getCenter();
 
     // Initialize marker if null
     if ( reportMarker == null ){
-        reportMarker = L.marker([latitude, longitude], {icon: markerArea, draggable:'true'});
-        reportMarkerLocation.latitude = latitude;
-        reportMarkerLocation.longitude = longitude;
+        reportMarker = L.marker([center.latitude, center.longitude], {icon: markerArea, draggable:'true'});
+        reportMarkerLocation.latitude = center.latitude;
+        reportMarkerLocation.longitude = center.longitude;
         reportMarker.addTo(map);
         console.log("latitude: " + reportMarkerLocation.latitude);
         console.log("longitude: " + reportMarkerLocation.longitude);
