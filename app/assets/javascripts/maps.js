@@ -131,7 +131,7 @@ function addReportLocation(){
     var longitude = center.longitude;
 
     // Initialize marker if null
-    if ( reportMarker == null ) {
+    if ( reportMarker === null || reportMarker === undefined ) {
         reportMarker = L.marker([latitude, longitude], {icon: markerArea, draggable: 'true'});
         reportMarker.addTo(map);
         reportMarker.on("dragend",function(ev){
