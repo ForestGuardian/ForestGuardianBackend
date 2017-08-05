@@ -594,10 +594,13 @@ function overrideWindyMetrics(){
     W.overlays.wind.setMetric( 'kt' );
 }
 
+function changeMetricsToKms(){
+    W.overlays.wind.setMetric( 'km/s' );
+}
+
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
-    overrideWindyMetrics();
 
     initializeMapOptions(pMap, $('#windyty') );
     downloadMODISData();
