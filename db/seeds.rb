@@ -15,3 +15,4 @@ User.create(email:'testing@forestguardian.org', password:'12341234', password_co
             "updated_at" => "2017-05-06T15:13:21.160-06:00"
         }
     } )
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

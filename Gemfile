@@ -147,3 +147,8 @@ gem 'paperclip'
 
 # AWS
 gem 'aws-sdk-v1'
+
+
+#### ADMIN #####
+
+gem 'activeadmin'
