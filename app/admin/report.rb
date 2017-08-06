@@ -11,7 +11,7 @@ ActiveAdmin.register Report do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :title, :author, :picture
+  permit_params :title, :description, :author, :picture
 
   index do
     selectable_column
@@ -29,6 +29,7 @@ ActiveAdmin.register Report do
   form do |f|
     f.inputs "Report" do
       f.input :title
+      f.input :description
       f.input :author, required: true
       f.input :location_name
       f.input :picture, required: true, as: :file
