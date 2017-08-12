@@ -456,7 +456,7 @@ function hideWindsLayer(){
 
 function showWindsLayer(){
     loadWindsLayerIfEmpty();
-    $('.leaflet-overlay-pane').show();
+    $('canvas.leaflet-zoom-animated').show();
     $('a.logo').show();
     $('#legend').show();
 }
