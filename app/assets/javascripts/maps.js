@@ -449,7 +449,7 @@ function showForestLayer(){
 }
 
 function hideWindsLayer(){
-    $('.leaflet-overlay-pane').hide();
+    $('canvas.leaflet-zoom-animated').hide();
     $('a.logo').hide();
     $('#legend').hide();
 }

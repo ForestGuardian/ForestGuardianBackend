@@ -16,3 +16,5 @@ User.create(email:'testing@forestguardian.org', password:'12341234', password_co
         }
     } )
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+DC2Aq9DVS5Nx
