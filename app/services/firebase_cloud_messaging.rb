@@ -17,7 +17,7 @@ class FirebaseCloudMessaging
     NotificationsJob.perform_later(to.map{|u| u.id}, {
         title: report.author.name,
         body: message
-    },{ avatar: report.author.avatar.url })
+    },{ avatar: report.author.avatar.url, report: report.attributes })
   end
 
 end
