@@ -17,6 +17,8 @@ class Report < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => %w(image/jpg image/jpeg image/png image/gif)
   # endregion
 
-
+  def picture_url
+    picture.url(:thumb)
+  end
 
 end
