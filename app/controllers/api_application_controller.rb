@@ -7,7 +7,7 @@ class ApiApplicationController < ActionController::Base
 
   include DeviseTokenAuth::Concerns::SetUserByToken
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters
 
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
