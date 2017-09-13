@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email:'testing@forestguardian.org', password:'12341234', password_confirmation:'12341234',
-  provider: 'email', uid: 'testing@forestguardian.org', sign_in_count: 0, tokens: {
+  provider: 'email', uid: 'testing@forestguardian.org', name:'Tester',sign_in_count: 0, tokens: {
         "SH1JKv2Qd3znwS1ConW0ug" => {
             "token" => "$2a$10$F2i8pKNl1DNB2/gU4kATguR5jqNYYFLvtrZ.wTetmNDj/aLeTU1fy",
             "expiry" => 1495314801,
@@ -17,4 +17,4 @@ User.create(email:'testing@forestguardian.org', password:'12341234', password_co
     } )
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-DC2Aq9DVS5Nx
+# DC2Aq9DVS5Nx
