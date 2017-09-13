@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
 
   # Check ActiveAdmin and DeviseAuthToken incompatibilities.
-  ::Rails.logger.warn(self.controller_path)
-  unless self.controller_path.include? 'admin'
+  unless controller_name.include? 'admin'
     include DeviseTokenAuth::Concerns::SetUserByToken
     # Prevent CSRF attacks by raising an exception.
     # For APIs, you may want to use :null_session instead.
