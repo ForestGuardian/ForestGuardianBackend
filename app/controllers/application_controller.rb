@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
   respond_to :html,:json
 
   # # Check ActiveAdmin and DeviseAuthToken incompatibilities.
-  include DeviseTokenAuth::Concerns::SetUserByToken  if json_request?
+  if json_request?
+    include DeviseTokenAuth::Concerns::SetUserByToken
+  end
 
   def redirect_to(options = {}, response_status = {})
     ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
