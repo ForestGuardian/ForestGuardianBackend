@@ -1,4 +1,4 @@
-class MapsController < ApplicationController
+class MapsController < BaseController
 
   layout 'maps'
 

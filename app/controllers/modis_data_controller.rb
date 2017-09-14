@@ -1,4 +1,4 @@
-class ModisDataController < ApplicationController
+class ModisDataController < BaseController
   require 'rgeo/geo_json'
 
   respond_to :json
