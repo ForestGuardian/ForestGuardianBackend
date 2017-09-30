@@ -416,7 +416,7 @@ DEPENDENCIES
   rails-assets-leaflet-ajax!
   rails-assets-leaflet-routing-machine!
   rails-assets-lrm-graphhopper!
-  rails-assets-osmtogeojson!
+  rails-assets-osmtogeojson (~> 2.2.12)!
   rails-controller-testing
   rgeo
   rgeo-geojson
