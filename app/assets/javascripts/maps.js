@@ -629,6 +629,15 @@ function getOSM(type, id) {
         }
     })
 };
+
+function clearRoute() {
+    $('path').remove();
+}
+
+function drawRoute(id) {
+    clearRoute();
+    getOSM('way', id);
+}
 //endregion
 
 function defaultMain(){
