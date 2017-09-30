@@ -14,4 +14,5 @@
 //= require leaflet
 //= require leaflet-ajax
 //= require leaflet-routing-machine
+//= require osmtogeojson
 //= require maps

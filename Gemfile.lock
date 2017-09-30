@@ -244,6 +244,7 @@ GEM
     rails-assets-leaflet-ajax (2.1.0)
     rails-assets-leaflet-routing-machine (3.2.5)
     rails-assets-lrm-graphhopper (1.2.0)
+    rails-assets-osmtogeojson (2.2.12)
     rails-controller-testing (1.0.1)
       actionpack (~> 5.x)
       actionview (~> 5.x)
@@ -417,6 +418,7 @@ DEPENDENCIES
   rails-assets-leaflet-ajax!
   rails-assets-leaflet-routing-machine!
   rails-assets-lrm-graphhopper!
+  rails-assets-osmtogeojson!
   rails-controller-testing
   rgeo
   rgeo-geojson
@@ -441,4 +443,4 @@ DEPENDENCIES
   zipruby
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

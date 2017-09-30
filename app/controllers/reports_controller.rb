@@ -1,6 +1,5 @@
 class ReportsController < BaseController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-
   before_action :authenticate_user!
 
   respond_to :json
@@ -34,7 +33,6 @@ class ReportsController < BaseController
 
     respond_to do |format|
       if @report.save
-
         FirebaseCloudMessaging::send_new_report_notification( User.all, @report )
 
         format.html { redirect_to @report, notice: 'Report was successfully created.' }

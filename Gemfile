@@ -127,6 +127,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-leaflet-ajax'
   gem 'rails-assets-leaflet-routing-machine'
   gem 'rails-assets-lrm-graphhopper'
+  gem 'rails-assets-osmtogeojson'
 end
 
 # PostGis

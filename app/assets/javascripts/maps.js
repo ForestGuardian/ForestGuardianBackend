@@ -614,6 +614,35 @@ function setBaseMap(pMap){
 
 //endregion
 
+//region OSM
+function getOSM(type, id) {
+    console.log(type, id);
+    var data = type + "(" + id + "); (._; > ;);out;";
+    $.post('http://overpass-api.de/api/interpreter', {data}).done(function(data) {
+        osmGeoJSON = osmtogeojson(data);
+        if (osmGeoJSON.features.length > 0) {
+            var osmFeatureLayer = L.mapbox.featureLayer()
+                .setGeoJSON(osmGeoJSON)
+                .addTo(map);
+            map.fitBounds(osmFeatureLayer.getBounds());
+            osmFeatureLayer.eachLayer(function(layer) {
+                var content = "<table><tbody>";
+                var tags = layer.feature.properties.tags;
+                for (var tag in tags) {
+                    tagValue = tags[tag];
+                    content += "<tr><th> " + tag + " </th><td>&nbsp;" + tagValue + " </td></tr>"
+                };
+                content += "</tbody></table>";
+                layer.bindPopup(content);
+            });
+        } else {
+            message = "There is no " + type + " with ID " + id
+            alert(message)
+        }
+    })
+};
+//endregion
+
 function defaultMain(){
     //Map where the data will be displayed
     map = L.map('map').setView([10.07568504578726, -84.31182861328125], 8);

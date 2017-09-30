@@ -1,4 +1,5 @@
 class BaseController < ApplicationController
+  include DeviseTokenAuth::Concerns::SetUserByToken
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -9,8 +10,6 @@ class BaseController < ApplicationController
 
   respond_to :html,:json
 
-  # # Check ActiveAdmin and DeviseAuthToken incompatibilities.
-  include DeviseTokenAuth::Concerns::SetUserByToken
 
   def redirect_to(options = {}, response_status = {})
     ::Rails.logger.error("Redirected by #{caller(1).first rescue "unknown"}")
