@@ -30,9 +30,6 @@ gem 'jquery-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
-
 
 ### FRONTEND - CSS ###
 
