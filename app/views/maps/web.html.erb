@@ -72,7 +72,7 @@
     let state = !elem.getAttribute('data-checked');
     elem.setAttribute('data-checked', state);
 
-    let nodes = elem.children();
+    let nodes = elem.childNodes;
     for(var i=0; i<nodes.length; i++) {
       if ( nodes[i].getAttribute('data-checked') === state ){
           nodes[i].show();
