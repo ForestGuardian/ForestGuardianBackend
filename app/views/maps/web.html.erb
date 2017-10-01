@@ -16,13 +16,13 @@
 
   <style>
     #container {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: 100%;
       position: relative;
     }
     #windyty,
     #app-layers-switch {
-      width: 100%;
+      width: 50px;
       height: 100%;
       position: absolute;
       top: 0;
@@ -40,9 +40,19 @@
 <div id="container">
   <div id="windyty"></div>
   <div id="app-layers-switch">
-    <img src="agua_layer_off.svg" />
-    <img src="lluvia_layer_rain_off.svg" />
-    <img src="bosque_layer_off.svg" />
+    <table>
+      <tr>
+        <th>
+          <img src="agua_layer_off.svg" width="50" height="50" />
+        </th>
+        <th>
+          <img src="lluvia_layer_rain_off.svg" width="50" height="50" />
+        </th>
+        <th>
+          <img src="bosque_layer_off.svg" width="50" height="50" />
+        </th>
+      </tr>
+    </table>
   </div>
 </div>
 
