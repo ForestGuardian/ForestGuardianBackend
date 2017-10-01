@@ -623,9 +623,11 @@ function getOSM(type, id) {
         if (osmGeoJSON.features.length > 0) {
             var osmFeatureLayer = L.geoJson().addTo(map);
             osmFeatureLayer.addData(osmGeoJSON);
+            mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
         } else {
             var message = "There is no " + type + " with ID " + id
             console.log(message)
+            mobile.onRouteGeoJson(null,message);
         }
     })
 };
