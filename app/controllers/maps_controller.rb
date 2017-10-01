@@ -17,4 +17,7 @@ class MapsController < BaseController
   def weather_perspective
   end
 
+  def web
+  end
+
 end

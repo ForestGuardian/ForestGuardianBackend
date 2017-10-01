@@ -146,6 +146,7 @@ gem 'paperclip'
 # AWS
 gem 'aws-sdk-v1'
 
+gem 'material_design_lite-rails'
 
 #### ADMIN #####
 
