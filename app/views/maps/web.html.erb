@@ -69,12 +69,12 @@
 <script>
 
   function on_custom_checkbox_clicked(elem) {
-    let state = !elem.attr('data-checked');
-    elem.attr('data-checked', state);
+    let state = !elem.getAttribute('data-checked');
+    elem.setAttribute('data-checked', state);
 
     let nodes = elem.children();
     for(var i=0; i<nodes.length; i++) {
-      if ( nodes[i].attr('data-checked') === state ){
+      if ( nodes[i].getAttribute('data-checked') === state ){
           nodes[i].show();
       }else{
           nodes[i].hide();
