@@ -13,11 +13,41 @@
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
+
+  <style>
+    #container {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+    #windyty,
+    #app-layers-switch {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    #app-layers-switch {
+      z-index: 10;
+    }
+  </style>
+
+
 </head>
 
 <body>
-<div id="windyty"></div>
+<div id="container">
+  <div id="windyty"></div>
+  <div id="app-layers-switch">
+    <img src="agua_layer_off.svg" />
+    <img src="lluvia_layer_rain_off.svg" />
+    <img src="bosque_layer_off.svg" />
+  </div>
+</div>
+
 <script async defer src="https://api.windytv.com/v2.3/boot.js"></script>
+
 </body>
 
 </html>
