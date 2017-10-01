@@ -49,20 +49,17 @@
     <table>
       <tr>
         <th>
-
-          <%= image_tag 'agua_layer_on.svg', width: 50, height: 50, class: 'status-on' %>
+          <div id="agua-layer"></div>
         </th>
       </tr>
       <tr>
         <th>
-          <%= image_tag 'lluvia_layer_rain_off.svg', width: 50, height: 50, class: 'status-off' %>
-          <%= image_tag 'lluvia_layer_rain_on.svg', width: 50, height: 50, class: 'status-on' %>
+          <div id="lluvia_layer_rain"></div>
         </th>
       </tr>
       <tr>
         <th>
-          <%= image_tag 'bosque_layer_off.svg', width: 50, height: 50, class: 'status-off' %>
-          <%= image_tag 'bosque_layer_on.svg', width: 50, height: 50, class: 'status-on' %>
+          <div id="bosque_layer"></div>
         </th>
       </tr>
     </table>
@@ -88,7 +85,7 @@
   function create_custom_checkbox(name) {
       let on_img = `<img src=/images/${name}_on.svg style="width: 50px; height: 50px" data-checked=true />`;
       let off_img = `<img src=/images/${name}_off.svg style="width: 50px; height: 50px" data-checked=false />`;
-      return `<div data-checked-name=${name} data-checked=false onclick="on_custom_checkbox_clicked(this)" > ${on_img} ${off_img}  </div>`;
+      document.getElementById(name).innerHTML(`<div data-checked-name=${name} data-checked=false onclick="on_custom_checkbox_clicked(this)" > ${on_img} ${off_img}  </div>`);
   }
 
   create_custom_checkbox('agua_layer');
