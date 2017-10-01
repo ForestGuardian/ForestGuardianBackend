@@ -85,7 +85,7 @@
   function create_custom_checkbox(name) {
       let on_img = `<img src=/images/${name}_on.svg style="width: 50px; height: 50px" data-checked=true />`;
       let off_img = `<img src=/images/${name}_off.svg style="width: 50px; height: 50px" data-checked=false />`;
-      document.getElementById(name).innerHTML(`<div data-checked-name=${name} data-checked=false onclick="on_custom_checkbox_clicked(this)" > ${on_img} ${off_img}  </div>`);
+      document.getElementById(name).innerHTML = `<div data-checked-name=${name} data-checked=false onclick="on_custom_checkbox_clicked(this)" > ${on_img} ${off_img}  </div>`;
   }
 
   create_custom_checkbox('agua_layer');
