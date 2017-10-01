@@ -31,8 +31,8 @@
       width: 50px;
       height: 100%;
       position: absolute;
-      top: 0;
-      left: 0;
+      bottom: 50px;
+      left: 50px;
     }
     #app-layers-switch {
       z-index: 10;
@@ -49,22 +49,53 @@
     <table>
       <tr>
         <th>
-          <%= image_tag 'agua_layer_off.svg', width: 50, height: 50 %>
+
+          <%= image_tag 'agua_layer_on.svg', width: 50, height: 50, class: 'status-on' %>
         </th>
       </tr>
       <tr>
         <th>
-          <%= image_tag 'lluvia_layer_rain_off.svg', width: 50, height: 50 %>
+          <%= image_tag 'lluvia_layer_rain_off.svg', width: 50, height: 50, class: 'status-off' %>
+          <%= image_tag 'lluvia_layer_rain_on.svg', width: 50, height: 50, class: 'status-on' %>
         </th>
       </tr>
       <tr>
         <th>
-          <%= image_tag 'bosque_layer_off.svg', width: 50, height: 50 %>
+          <%= image_tag 'bosque_layer_off.svg', width: 50, height: 50, class: 'status-off' %>
+          <%= image_tag 'bosque_layer_on.svg', width: 50, height: 50, class: 'status-on' %>
         </th>
       </tr>
     </table>
   </div>
 </div>
+
+<script>
+
+  function on_custom_checkbox_clicked(elem) {
+    var state = !elem.attr('data-checked');
+    elem.attr('data-checked', state);
+
+    var nodes = elem.children();
+    for(var i=0; i<nodes.length; i++) {
+      if ( nodes[i].attr('data-checked') === state ){
+          nodes[i].show();
+      }else{
+          nodes[i].hide();
+      }
+    }
+  }
+
+  function create_custom_checkbox(name) {
+      var on_img = `<img src=/images/${name}_on.svg style="width: 50px; height: 50px" data-checked=true onclick="on_custom_checkbox_clicked(this)" />`;
+      var off_img = `<img src=/images/${name}_off.svg style="width: 50px; height: 50px" data-checked=false onclick="on_custom_checkbox_clicked(this)" />`;
+      return `<div data-checked-name=${name} data-checked=false > ${on_img} ${off_img} </div>`;
+  }
+
+  create_custom_checkbox('agua_layer');
+  create_custom_checkbox('lluvia_layer_rain');
+  create_custom_checkbox('bosque_layer');
+
+</script>
 
 <script async defer src="https://api.windytv.com/v2.3/boot.js"></script>
 
