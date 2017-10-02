@@ -616,8 +616,8 @@ function setBaseMap(pMap){
 
 //region OSM
 function getOSM(type, id) {
-    console.log(type, id);
-    var data = type + "(" + id + "); (._; > ;);out;";
+    console.log(`${type} ${id}`);
+    const data = type + "(" + id + "); (._; > ;);out;";
     $.post('http://overpass-api.de/api/interpreter', {data}).done(function(data) {
         var osmGeoJSON = osmtogeojson(data);
         if (osmGeoJSON.features.length > 0) {
