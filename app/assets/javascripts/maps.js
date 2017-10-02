@@ -625,6 +625,7 @@ function getOSM(type, id) {
         crossDomain: true,
         data: data,
         success: function(data) {
+            console.log("overpass api success.");
             var osmGeoJSON = osmtogeojson(data);
             if (osmGeoJSON.features.length > 0) {
                 var osmFeatureLayer = L.geoJson().addTo(map);
