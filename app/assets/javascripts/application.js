@@ -14,3 +14,27 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$("#agua").change(function () {
+    if (this.checked) {
+        showWindsLayer();
+    } else {
+        hideWindsLayer();
+    }
+})
+
+$("#lluvia").change(function () {
+    if (this.checked) {
+        showWeatherLayer();
+    } else {
+        hideWeatherLayer();
+    }
+})
+
+$("#bosque").change(function () {
+    if (this.checked) {
+        showForestLayer();
+    } else {
+        hideForestLayer();
+    }
+})
