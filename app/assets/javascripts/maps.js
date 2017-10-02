@@ -608,6 +608,14 @@ function windytyMain(pMap) {
     overrideUI();
     downloadMODISData();
     overrideWindyMetrics();
+
+    map.on('zoomend', function() {
+        var value = map.getZoom();
+        const selector = $('#selector');
+        if( selector.length ){
+            selector.val(value);
+        };
+    });
 }
 
 function setBaseMap(pMap){
