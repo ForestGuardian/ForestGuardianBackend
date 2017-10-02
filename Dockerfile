@@ -23,3 +23,5 @@ ARG AWS_ACCESS_KEY_KEY
 ARG AWS_REGION
 
 RUN DB_ADAPTER=nulldb rake assets:precompile
+
+RUN rm /ForestGuardianBackend/tmp/pids/server.pid
