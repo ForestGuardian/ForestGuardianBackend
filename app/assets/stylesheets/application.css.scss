@@ -75,7 +75,6 @@ input[type=checkbox]#agua + label {
   background:url(agua_layer_off.svg) no-repeat;
   height: 50px;
   width: 50px;;
-  background-size: 50%;
 }
 
 input[type=checkbox]:checked#agua + label {
@@ -83,7 +82,6 @@ input[type=checkbox]:checked#agua + label {
   height: 50px;
   width: 50px;
   display:inline-block;
-  background-size: 50%;
 }
 
 
@@ -97,7 +95,6 @@ input[type=checkbox]#lluvia + label {
   background:url(lluvia_layer_rain_off.svg) no-repeat;
   height: 50px;
   width: 50px;;
-  background-size: 50%;
 }
 
 input[type=checkbox]:checked#lluvia + label {
@@ -105,7 +102,6 @@ input[type=checkbox]:checked#lluvia + label {
   height: 50px;
   width: 50px;
   display:inline-block;
-  background-size: 50%;
 }
 
 
@@ -119,7 +115,6 @@ input[type=checkbox]#bosque + label {
   background:url(bosque_layer_off.svg) no-repeat;
   height: 50px;
   width: 50px;;
-  background-size: 50%;
 }
 
 input[type=checkbox]:checked#bosque + label {
@@ -127,7 +122,6 @@ input[type=checkbox]:checked#bosque + label {
   height: 50px;
   width: 50px;
   display:inline-block;
-  background-size: 50%;
 }
 
 #container {
@@ -144,7 +138,7 @@ input[type=checkbox]:checked#bosque + label {
 }
 #app-layers-switch {
   width: 50px;
-  height: 100%;
+  height: auto;
   position: absolute;
   bottom: 50px;
   left: 50px;
