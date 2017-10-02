@@ -618,27 +618,33 @@ function setBaseMap(pMap){
 function getOSM(type, id) {
     console.log(`${type} ${id}`);
     const data = type + "(" + id + "); (._; > ;);out;";
-    $.post('http://overpass-api.de/api/interpreter', {data}).done(function(data) {
-        var osmGeoJSON = osmtogeojson(data);
-        if (osmGeoJSON.features.length > 0) {
-            var osmFeatureLayer = L.geoJson().addTo(map);
-            osmFeatureLayer.addData(osmGeoJSON);
-            try {
-                mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
-            } catch(err) {
-                console.log("Error trying to invoke mobile method");
+
+    $.ajax({
+        type: "POST",
+        url: 'http://overpass-api.de/api/interpreter',
+        crossDomain: true,
+        data: data,
+        done: function(data) {
+            var osmGeoJSON = osmtogeojson(data);
+            if (osmGeoJSON.features.length > 0) {
+                var osmFeatureLayer = L.geoJson().addTo(map);
+                osmFeatureLayer.addData(osmGeoJSON);
+                try {
+                    mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
+                } catch(err) {
+                    console.log("Error trying to invoke mobile method");
+                }
+            } else {
+                const message = "There is no " + type + " with ID " + id;
+                console.log(message)
+                try{
+                    mobile.onRouteGeoJson(null,message);
+                } catch(err) {
+                    console.log("Error trying to invoke mobile method");
+                }
             }
-        } else {
-            var message = "There is no " + type + " with ID " + id
-            console.log(message)
-            try{
-                mobile.onRouteGeoJson(null,message);
-            } catch(err) {
-                console.log("Error trying to invoke mobile method");
-            }
-        }
-    })
-};
+        }});
+}
 
 function clearRoute() {
     $('path').remove();
