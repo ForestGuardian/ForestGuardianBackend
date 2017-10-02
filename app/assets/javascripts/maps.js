@@ -629,9 +629,10 @@ function getOSM(type, id) {
             const osmGeoJSON = osmtogeojson(data);
             console.log(data);
             if (osmGeoJSON.features.length > 0) {
+                console.log("GeoJSON is correct!");
                 var osmFeatureLayer = L.geoJson().addTo(map);
                 osmFeatureLayer.addData(osmGeoJSON);
-                console.log("Invoking mobile method.")
+                console.log("Invoking mobile method.");
                 try {
                     mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), "");
                 } catch(err) {
