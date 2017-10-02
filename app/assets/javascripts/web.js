@@ -7,7 +7,7 @@
 
 $( document ).ready(function() {
 
-    $("#agua").change(function () {
+    $("#wind").change(function () {
         if (this.checked) {
             showWindsLayer();
         } else {
@@ -15,7 +15,7 @@ $( document ).ready(function() {
         }
     })
 
-    $("#lluvia").change(function () {
+    $("#rain").change(function () {
         if (this.checked) {
             showWeatherLayer();
         } else {
@@ -23,7 +23,7 @@ $( document ).ready(function() {
         }
     })
 
-    $("#bosque").change(function () {
+    $("#forest").change(function () {
         if (this.checked) {
             showForestLayer();
         } else {
