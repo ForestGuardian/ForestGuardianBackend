@@ -53,10 +53,12 @@
   <div id="app-zoom-controls">
     <input id="zoom-selector" type="range" onchange="map.setZoom(this.value)" min="0" max="18" step="1">
     <script>
-        map.on('zoomend', function() {
-            var value = map.getZoom();
-            $('#zoom-selector').val(value);
-        });
+      $(function () {
+          map.on('zoomend', function() {
+              var value = map.getZoom();
+              $('#zoom-selector').val(value);
+          });
+      });
     </script>
   </div>
 </div>
