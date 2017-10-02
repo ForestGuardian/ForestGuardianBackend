@@ -624,7 +624,7 @@ function getOSM(type, id) {
         url: 'http://overpass-api.de/api/interpreter',
         crossDomain: true,
         data: data,
-        done: function(data) {
+        success: function(data) {
             var osmGeoJSON = osmtogeojson(data);
             if (osmGeoJSON.features.length > 0) {
                 var osmFeatureLayer = L.geoJson().addTo(map);
@@ -643,7 +643,11 @@ function getOSM(type, id) {
                     console.log("Error trying to invoke mobile method");
                 }
             }
-        }});
+        },
+        error: function(err) {
+            console.log(`Error with overpass-api: ${err}`);
+        }
+    });
 }
 
 function clearRoute() {
