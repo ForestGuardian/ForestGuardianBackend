@@ -625,10 +625,13 @@ function getOSM(type, id) {
         crossDomain: true,
         data: data,
         success: function(data) {
+          console.log("POST done");
             var osmGeoJSON = osmtogeojson(data);
             if (osmGeoJSON.features.length > 0) {
+                console.log("GeoJSON is correct!");
                 var osmFeatureLayer = L.geoJson().addTo(map);
                 osmFeatureLayer.addData(osmGeoJSON);
+                console.log("Trying to call the Android method");
                 try {
                     mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
                 } catch(err) {
