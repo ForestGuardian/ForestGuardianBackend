@@ -67,6 +67,11 @@ function displayWildfiresDetails(lat, lng, brightness, scan, track, adquisitionT
     } catch(err) {
         console.log("Error trying to invoke mobile method");
     }
+    try {
+        webInterface.showWebInfoMarker(lat,lng, brightness);
+    } catch(err) {
+        console.log("Error trying to show web info marker");
+    }
 }
 
 //@function setUserCurrentLocation

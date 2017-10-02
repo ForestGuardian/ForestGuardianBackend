@@ -32,3 +32,13 @@ $( document ).ready(function() {
     })
 
 });
+
+var webInterface = new function(){
+    this.showWebInfoMarker = function (lat,lng, brightness) {
+        L.popup({offset: L.point(0, -37)})
+            .setLatLng(L.latLng(lat, lat))
+            .setContent('<b>Incendio</b>' +
+                '<br>Intensidad: ' + brightness + " K")
+            .openOn(map);
+    }
+}
