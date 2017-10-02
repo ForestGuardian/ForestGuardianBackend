@@ -41,3 +41,11 @@ var webInterface = new function() {
             .openOn(map);
     }
 };
+
+
+$( document ).ready(function() {
+    map.on('zoomend', function() {
+        var value = map.getZoom();
+        $('#zoom-selector').val(value);
+    });
+});
