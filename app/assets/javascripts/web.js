@@ -5,27 +5,30 @@
 //= require osmtogeojson
 //= require maps
 
+$( document ).ready(function() {
 
-$("#agua").change(function () {
-    if (this.checked) {
-        showWindsLayer();
-    } else {
-        hideWindsLayer();
-    }
-})
+    $("#agua").change(function () {
+        if (this.checked) {
+            showWindsLayer();
+        } else {
+            hideWindsLayer();
+        }
+    })
 
-$("#lluvia").change(function () {
-    if (this.checked) {
-        showWeatherLayer();
-    } else {
-        hideWeatherLayer();
-    }
-})
+    $("#lluvia").change(function () {
+        if (this.checked) {
+            showWeatherLayer();
+        } else {
+            hideWeatherLayer();
+        }
+    })
 
-$("#bosque").change(function () {
-    if (this.checked) {
-        showForestLayer();
-    } else {
-        hideForestLayer();
-    }
-})
+    $("#bosque").change(function () {
+        if (this.checked) {
+            showForestLayer();
+        } else {
+            hideForestLayer();
+        }
+    })
+
+}
