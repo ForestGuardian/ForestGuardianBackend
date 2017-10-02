@@ -611,7 +611,7 @@ function windytyMain(pMap) {
 
     map.on('zoomend', function() {
         var value = map.getZoom();
-        const selector = $('#selector');
+        const selector = $('#zoom-selector');
         if( selector.length ){
             selector.val(value);
         };
