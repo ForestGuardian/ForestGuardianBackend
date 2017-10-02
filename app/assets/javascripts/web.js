@@ -33,12 +33,11 @@ $( document ).ready(function() {
 
 });
 
-var webInterface = new function(){
+var webInterface = new function() {
     this.showWebInfoMarker = function (lat,lng, brightness) {
-        L.popup({offset: L.point(0, -37)})
-            .setLatLng(L.latLng(lat, lat))
-            .setContent('<b>Incendio</b>' +
-                '<br>Intensidad: ' + brightness + " K")
+        L.popup()
+            .setLatLng(L.latLng(lat, lng))
+            .setContent('<b>Incendio</b><br>Intensidad: ' + brightness + " K")
             .openOn(map);
     }
-}
+};
