@@ -601,12 +601,6 @@ function overrideWindyMetrics(){
     W.overlays.wind.setMetric( 'km/h' );
 }
 
-function overrideZoomSelector() {
-    $('#zoomSelector').change( function() {
-        map.setZoom($(this).value);
-    });
-}
-
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
@@ -614,7 +608,6 @@ function windytyMain(pMap) {
     overrideUI();
     downloadMODISData();
     overrideWindyMetrics();
-    overrideZoomSelector();
 }
 
 function setBaseMap(pMap){
