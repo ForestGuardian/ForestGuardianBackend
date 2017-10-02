@@ -14,8 +14,8 @@ var fireIcon;
 var fireStationIcon;
 var markerIcon;
 var markerArea;
-var reportMarkerLocation = { 'latitude':0.0, 'longitude':0.0 }
-var currentLocation = { 'latitude':10.07568504578726, 'longitude': -84.31182861328125 }
+var reportMarkerLocation = { 'latitude':0.0, 'longitude':0.0 };
+var currentLocation = { 'latitude':10.07568504578726, 'longitude': -84.31182861328125 };
 var layerCollection ={
     forest: [],
     fires: [],
@@ -623,11 +623,19 @@ function getOSM(type, id) {
         if (osmGeoJSON.features.length > 0) {
             var osmFeatureLayer = L.geoJson().addTo(map);
             osmFeatureLayer.addData(osmGeoJSON);
-            mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
+            try {
+                mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
+            } catch(err) {
+                console.log("Error trying to invoke mobile method");
+            }
         } else {
             var message = "There is no " + type + " with ID " + id
             console.log(message)
-            mobile.onRouteGeoJson(null,message);
+            try{
+                mobile.onRouteGeoJson(null,message);
+            } catch(err) {
+                console.log("Error trying to invoke mobile method");
+            }
         }
     })
 };
@@ -650,7 +658,6 @@ function defaultMain(){
 }
 
 $(function() {
-
     if ( !isWindyMap() ) {
         defaultMain();
         initializeMapOptions( map, $('#map') );
