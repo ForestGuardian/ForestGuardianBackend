@@ -39,7 +39,15 @@
       </tr>
     </table>
   </div>
-  <div id="app-top-bar"></div>
+  <div id="app-top-bar">
+    <div class="mdl-layout__header-row">
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Visualization</a>
+        <a class="mdl-navigation__link" href="">About</a>
+        <a class="mdl-navigation__link" href="">Contact</a>
+      </nav>
+    </div>
+  </div>
   <div id="app-zoom-controls">
     <input type="range" onchange="map.setZoom(this.value)" min="0" max="18" step="0.1">
   </div>
