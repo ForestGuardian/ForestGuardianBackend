@@ -626,12 +626,14 @@ function getOSM(type, id) {
         data: data,
         success: function(data) {
             console.log("overpass api success.");
-            var osmGeoJSON = osmtogeojson(data);
+            const osmGeoJSON = osmtogeojson(data);
+            console.log(data);
             if (osmGeoJSON.features.length > 0) {
                 var osmFeatureLayer = L.geoJson().addTo(map);
                 osmFeatureLayer.addData(osmGeoJSON);
+                console.log("Invoking mobile method.")
                 try {
-                    mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), null);
+                    mobile.onRouteGeoJson(JSON.stringify(osmGeoJSON), "");
                 } catch(err) {
                     console.log("Error trying to invoke mobile method");
                 }
@@ -639,14 +641,20 @@ function getOSM(type, id) {
                 const message = "There is no " + type + " with ID " + id;
                 console.log(message)
                 try{
-                    mobile.onRouteGeoJson(null,message);
+                    mobile.onRouteGeoJson("",message);
                 } catch(err) {
                     console.log("Error trying to invoke mobile method");
                 }
             }
         },
         error: function(err) {
-            console.log(`Error with overpass-api: ${err}`);
+            const message = `Error with overpass-api: ${err}`;
+            console.log(message);
+            try{
+                mobile.onRouteGeoJson("",message);
+            } catch(err) {
+                console.log("Error trying to invoke mobile method");
+            }
         }
     });
 }
