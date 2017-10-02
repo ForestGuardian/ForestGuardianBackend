@@ -104,10 +104,14 @@
 }
 
 .mdl-navigation__link {
-  border-bottom: solid 2px #93c83d;
+  border-bottom: transparent;
   display: inline;
   padding: 0px;
   margin: 20px;
   height: 45px;
   font-weight: bold;
+}
+
+.mdl-navigation__link-activated {
+  border-bottom: solid 2px #93c83d;
 }
