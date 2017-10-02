@@ -625,7 +625,7 @@ function getOSM(type, id) {
         crossDomain: true,
         data: data,
         success: function(data) {
-          console.log("POST done");
+            console.log("overpass api success.");
             var osmGeoJSON = osmtogeojson(data);
             if (osmGeoJSON.features.length > 0) {
                 console.log("GeoJSON is correct!");
