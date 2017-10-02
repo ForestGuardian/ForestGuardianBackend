@@ -1,0 +1,58 @@
+
+input[type=checkbox]#wind {
+    display:none
+}
+
+input[type=checkbox]#wind + label {
+    display:inline-block;
+    padding: 0 0 0 0px;
+    background:url(viento_layer_off.svg) no-repeat;
+    height: 50px;
+    width: 50px;;
+}
+
+input[type=checkbox]:checked#wind + label {
+    background:url(viento_layer_on.svg) no-repeat;
+    height: 50px;
+    width: 50px;
+    display:inline-block;
+}
+
+input[type=checkbox]#rain {
+    display:none
+}
+
+input[type=checkbox]#rain + label {
+    display:inline-block;
+    padding: 0 0 0 0px;
+    background:url(lluvia_layer_rain_off.svg) no-repeat;
+    height: 50px;
+    width: 50px;;
+}
+
+input[type=checkbox]:checked#rain + label {
+    background:url(lluvia_layer_rain_on.svg) no-repeat;
+    height: 50px;
+    width: 50px;
+    display:inline-block;
+}
+
+
+input[type=checkbox]#forest {
+    display:none
+}
+
+input[type=checkbox]#forest + label {
+    display:inline-block;
+    padding: 0 0 0 0px;
+    background:url(bosque_layer_off.svg) no-repeat;
+    height: 50px;
+    width: 50px;;
+}
+
+input[type=checkbox]:checked#forest + label {
+    background:url(bosque_layer_on.svg) no-repeat;
+    height: 50px;
+    width: 50px;
+    display:inline-block;
+}
