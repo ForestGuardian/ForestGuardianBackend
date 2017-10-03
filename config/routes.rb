@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'maps/protected_areas' => 'maps#protected_areas'
   get 'maps/weather_perspective' => 'maps#weather_perspective'
   get 'maps/web' => 'maps#web'
-  get '/' => 'map#web'
 
   # modis data
   #get 'modis_data/fires' => 'modis_data#fires'
@@ -32,4 +31,6 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
+
+  root'map#web'
 end
