@@ -601,6 +601,21 @@ function overrideWindyMetrics(){
     W.overlays.wind.setMetric( 'km/h' );
 }
 
+function updateZoom() {
+    const selector = $('#zoom-selector');
+    var value = map.getZoom();
+    if( selector.length ) {
+        selector.val(value);
+    }
+}
+
+function setupZoomSelector() {
+    updateZoom();
+    map.on('zoomend', function() {
+        updateZoom();
+    });
+}
+
 function windytyMain(pMap) {
     map = pMap; //global ref
     setBaseMap(map);
@@ -608,14 +623,7 @@ function windytyMain(pMap) {
     overrideUI();
     downloadMODISData();
     overrideWindyMetrics();
-
-    map.on('zoomend', function() {
-        var value = map.getZoom();
-        const selector = $('#zoom-selector');
-        if( selector.length ){
-            selector.val(value);
-        };
-    });
+    setupZoomSelector();
 }
 
 function setBaseMap(pMap){
