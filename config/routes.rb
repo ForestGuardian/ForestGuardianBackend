@@ -32,5 +32,5 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
 
-  root'map#web'
+  root 'map#web'
 end
