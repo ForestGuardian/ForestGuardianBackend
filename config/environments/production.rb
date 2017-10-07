@@ -77,7 +77,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Paperclip config
+  # Paperclip config.
   config.paperclip_defaults = {
       storage: :s3,
       s3_credentials: {
@@ -87,5 +87,17 @@ Rails.application.configure do
           s3_region: ENV.fetch('AWS_REGION'),
           s3_host_name: "s3-#{ENV['AWS_REGION']}.amazonaws.com"
       }
+  }
+
+  # Mailer host.
+  config.action_mailer.default_url_options = { :host => 'app.forestguardian.org'}
+  # SMTP settings.
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.zoho.com",
+      :port                 => 587,
+      :user_name            => "info@forestguardian.org",
+      :password             => "uhVNqQQm*#szsz4b",
+      :authentication       => "plain",
+      :enable_starttls_auto => true
   }
 end
