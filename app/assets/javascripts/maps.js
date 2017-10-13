@@ -23,6 +23,14 @@ var layerCollection ={
     protected_areas: []
 }
 
+// legend config
+var legend_position = {
+    'right': '0px',
+    'top': '50px',
+    'left': 'initial',
+    'bottom': 'initial'
+};
+
 var windytyInit = {
     // Required: API key
     key: 'pBEnvSWfnXaWpNC',
@@ -567,14 +575,7 @@ function relocateWindyLogo(){
 
 function relocateLegend(){
     var legendView = $('#legend');
-    legendView.css(
-        {
-            'right': '0px',
-            'top': '50px',
-            'left': 'initial',
-            'bottom': 'initial'
-        }
-    );
+    legendView.css(legend_position);
 }
 
 function overrideUI(){

@@ -5,6 +5,14 @@
 //= require osmtogeojson
 //= require maps
 
+// legend config
+legend_position = {
+    'right': '0px',
+    'bottom': '50px',
+    'left': 'initial',
+    'top': 'initial'
+};
+
 $( document ).ready(function() {
 
     $("#wind").change(function () {
