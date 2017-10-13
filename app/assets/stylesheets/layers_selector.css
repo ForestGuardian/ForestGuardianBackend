@@ -57,7 +57,11 @@ input[type=checkbox]:checked#forest + label {
     display:inline-block;
 }
 
-b.app-layer-title {
+th.app-layer-title {
+    text-align: start;
+}
+
+th.app-layer-title > b {
     text-align: start;
     margin-left: 20px;
     color: white;
