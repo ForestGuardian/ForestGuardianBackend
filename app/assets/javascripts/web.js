@@ -4,6 +4,7 @@
 //= require leaflet-routing-machine
 //= require osmtogeojson
 //= require maps
+//= require webflow
 
 // legend config
 legend_position = {
