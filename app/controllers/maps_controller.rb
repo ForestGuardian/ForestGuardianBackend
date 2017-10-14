@@ -1,5 +1,7 @@
 class MapsController < BaseController
 
+  layout false
+
   def fires
   end
 
