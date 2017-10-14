@@ -334,8 +334,8 @@ function loadWeatherLayerIfEmpty(){
     /* Central America weather perspectives */
     if ( $.isEmptyObject(layerCollection.weather) ) {
         layerCollection.weather.push(L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
-                layers: 'perspectiva_ca_mjj',
-                styles: 'perspectiva_ca_mjj',
+                layers: 'perpestiva_aso_2017',
+                styles: 'perspectiva_fgcss',
                 transparent: true,
                 format: 'image/png'
             })
