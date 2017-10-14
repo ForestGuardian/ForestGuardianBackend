@@ -1,6 +1,10 @@
 /**
  * Created by Luis Alonso Murillo Rojas on 11/12/16.
  */
+//= require leaflet
+//= require leaflet-ajax
+//= require leaflet-routing-machine
+//= require osmtogeojson
 
 /* Global definitions */
 var map;
