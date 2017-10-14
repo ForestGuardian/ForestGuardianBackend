@@ -33,7 +33,7 @@ services:
     env_file:
       - '.env.web'
     image: forestguardian/backend
-    command: bash -c 'git pull; bundle exec rails s -p 80 -b "0.0.0.0"'
+    command: bash -c 'git pull && rake assets:precompile && rm -f /ForestGuardianBackend/tmp/pids/server.pid && bundle exec rails s -p 80 -b "0.0.0.0"'
     ports:
       - "80:80"
     depends_on:
