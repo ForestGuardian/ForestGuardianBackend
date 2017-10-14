@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'maps/protected_areas' => 'maps#protected_areas'
   get 'maps/weather_perspective' => 'maps#weather_perspective'
   get 'maps/web' => 'maps#web'
+  get 'about' => 'static_pages#about'
 
   # modis data
   #get 'modis_data/fires' => 'modis_data#fires'

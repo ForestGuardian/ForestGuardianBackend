@@ -1,6 +1,6 @@
 class StaticPagesController < BaseController
 
-  def home
+  def about
   end
 
 end
