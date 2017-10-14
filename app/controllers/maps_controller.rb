@@ -1,6 +1,6 @@
 class MapsController < BaseController
 
-  layout false
+  layout 'mobile'
 
   def fires
   end
