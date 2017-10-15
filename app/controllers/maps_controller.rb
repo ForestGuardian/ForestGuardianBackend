@@ -1,7 +1,8 @@
 class MapsController < BaseController
 
-  layout 'mobile', only: :windy
-  layout 'application', only: :web
+  layout false
+  layout 'mobile', only: [:windy]
+  layout 'application', only: [:web]
 
   def windy
   end
