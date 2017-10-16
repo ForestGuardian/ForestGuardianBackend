@@ -17,6 +17,7 @@
 @import "webflow";
 @import "normalize";
 @import "guardian-forestal.webflow";
+@import "gotham-font";
 
 .centered-x {
   position: relative;
@@ -112,6 +113,7 @@
   margin: 20px;
   height: 45px;
   font-weight: bold;
+  font-family: Gotham, sans-serif;
 }
 
 .mdl-navigation__link-activated {
