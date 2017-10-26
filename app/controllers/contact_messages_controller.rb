@@ -7,7 +7,7 @@ class ContactMessagesController < InheritedResources::Base
   end
 
   def create
-    @contact_message = ContactMessage.new(report_params)
+    @contact_message = ContactMessage.new(contact_message_params)
 
     respond_to do |format|
       if @contact_message.save
