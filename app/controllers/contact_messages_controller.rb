@@ -3,6 +3,7 @@ class ContactMessagesController < InheritedResources::Base
   respond_to :html
 
   def new
+    @contact_message = ContactMessage.new
   end
 
   def create
