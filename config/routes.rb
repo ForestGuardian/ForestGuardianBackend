@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contact_messages
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   require 'sidekiq/web'
@@ -17,13 +18,12 @@ Rails.application.routes.draw do
   get 'maps/windy' => 'maps#windy'
   get 'maps/web' => 'maps#web'
   get 'about' => 'static_pages#about'
-  get 'contact' => 'static_pages#contact'
 
   # modis data
-  #get 'modis_data/fires' => 'modis_data#fires'
   post 'modis_data/fires' => 'modis_data#fires'
 
   resources :reports
+  resources :contact_messages, only: [:create, :new]
 
   require 'sidekiq/web'
   require 'sidekiq/cron/web'

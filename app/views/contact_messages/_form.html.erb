@@ -1,0 +1,24 @@
+<%= form_for(contact_message), class: "w-clearfix" do |f| %>
+  <% if contact_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact_message.errors.count, "error") %> prohibited this contact_message from being saved:</h2>
+
+      <ul>
+      <% contact_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name, class: 'field-label-2', for: 'name' %>
+  <%= f.textfield :name, class: 'w-input', id: 'name', placeholder: 'Enter your name', maxlength:'256' %>
+
+  <%= f.label :email, class: 'field-label', for: 'email' %>
+  <%= f.textfield :name, class: 'w-input', id: 'email', placeholder: 'Enter your email', maxlength:'256' %>
+
+  <%= f.textarea :name, class: 'textarea w-input', name: 'field', placeholder: 'Send us a message!', maxlength:'5000' %>
+
+  <%= f.submit class: 'submit-button w-button' %>
+
+<% end %>
