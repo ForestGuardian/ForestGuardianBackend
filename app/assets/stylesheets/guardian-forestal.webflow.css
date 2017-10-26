@@ -70,8 +70,8 @@
 }
 
 .body {
-    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('/assets/bg2.jpeg');
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('/assets/bg2.jpeg');
+    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('../images/bg2.jpeg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('../images/bg2.jpeg');
     background-position: 0px 0px, 0px 0px;
     background-size: auto, 1458px 848px;
 }
@@ -385,7 +385,7 @@
 
 @font-face {
     font-family: 'Gotham';
-    src: url('/assets/Gotham-Bold.otf') format('opentype');
+    src: url('../fonts/Gotham-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
 }
