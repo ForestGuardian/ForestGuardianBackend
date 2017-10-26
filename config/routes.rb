@@ -18,9 +18,6 @@ Rails.application.routes.draw do
   get 'maps/web' => 'maps#web'
   get 'about' => 'static_pages#about'
 
-  get 'fonts' => 'assets'
-  get 'images' => 'assets'
-
   # modis data
   #get 'modis_data/fires' => 'modis_data#fires'
   post 'modis_data/fires' => 'modis_data#fires'
