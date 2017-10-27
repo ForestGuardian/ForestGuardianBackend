@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'maps/windy' => 'maps#windy'
   get 'maps/web' => 'maps#web'
   get 'about' => 'static_pages#about'
+  get 'contact' => 'contact_messages#new'
 
   # modis data
   post 'modis_data/fires' => 'modis_data#fires'
