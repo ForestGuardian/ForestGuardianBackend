@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'modis_data/fires' => 'modis_data#fires'
 
   resources :reports
-  resources :contact_messages, only: [:create, :new]
+  resources :contact_messages, only: [:create, :new, :show]
 
   require 'sidekiq/web'
   require 'sidekiq/cron/web'

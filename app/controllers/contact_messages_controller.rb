@@ -6,6 +6,10 @@ class ContactMessagesController < InheritedResources::Base
     @contact_message = ContactMessage.new
   end
 
+  def show
+    redirect_to root_url
+  end
+
   def create
     @contact_message = ContactMessage.new(contact_message_params)
 
