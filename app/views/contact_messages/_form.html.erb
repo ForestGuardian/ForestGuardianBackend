@@ -1,13 +1,15 @@
 <%= form_for(contact_message) do |f| %>
   <% if contact_message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact_message.errors.count, "error") %> prohibited this contact_message from being saved:</h2>
+    <div id="error_explanation" class="mdl-card__menu mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"><%= pluralize(contact_message.errors.count, "error") %> prohibited this contact_message from being saved:</h2>
+      </div>
 
-      <ul>
+      <div class="mdl-card__supporting-text">
       <% contact_message.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
+      </div>
     </div>
   <% end %>
 
