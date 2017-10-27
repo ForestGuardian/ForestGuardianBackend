@@ -27,7 +27,7 @@ class ContactMessagesController < InheritedResources::Base
   private
 
     def contact_message_params
-      params.require(:contact_message).permit()
+      params.require(:contact_message).permit(:name, :email, :text)
     end
 
 end
