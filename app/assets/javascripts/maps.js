@@ -74,11 +74,23 @@ function displayWildfiresDetails(lat, lng, brightness, scan, track, adquisitionT
         "BRIGHT_T31":bright_t31,
         "FRP":frp,
         "DAYNIGHT":daynight};
+    // Send data to Android
     try {
         mobile.getMODISData(JSON.stringify(jsonMODIS));
     } catch(err) {
-        console.log("Error trying to invoke mobile method");
+        console.log("Error trying to invoke android method");
     }
+    // Send data to iOS
+    try {
+      var data = {
+        "method":"getMODISData",
+        "data":jsonMODIS
+      };
+      window.webkit.messageHandlers.mobile.postMessage(JSON.stringify(data));
+    } catch (err) {
+      console.log("Error trying to invoke iOS method");
+    }
+    // Send data to Website
     try {
         webInterface.showWebInfoMarker(lat,lng, brightness);
     } catch(err) {
@@ -296,9 +308,13 @@ function checkZoomLevel() {
 function loadForestLayerIfEmpty(){
     if ( $.isEmptyObject(layerCollection.forest) ) {
         /* Forest types for Costa Rica */
-        layerCollection.forest.push(L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi18_tipos_bosque_costa_rica_2015@EPSG:900913@png/{z}/{x}/{y}.png', {
-            tms: true
-        }));
+        layerCollection.forest.push(L.tileLayer.wms('http://138.68.63.173/geoserver/ows?', {
+                layers: 'bi18_tipos_bosque_costa_rica_2015',
+                styles: 'bosques_costa_rica_fg',
+                transparent: true,
+                format: 'image/png'
+            })
+        );
 
         /* Forest types for Honduras */
         layerCollection.forest.push(L.tileLayer('http://138.68.63.173/geoserver/gwc/service/tms/1.0.0/geonode:bi21_tipos_bosque_honduras_2015_v2@EPSG:900913@png/{z}/{x}/{y}.png', {
