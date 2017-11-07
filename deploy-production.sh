@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function fg_activate_machine {
-   eval $(docker-machine env forestguardian)
+   eval $(docker-machine env ForestGuardianWebSummit)
 }
 
 function fg_clean {
