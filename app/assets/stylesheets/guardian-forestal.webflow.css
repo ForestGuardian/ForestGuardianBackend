@@ -97,15 +97,15 @@
 }
 
 .body {
-    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('../images/bg2.jpeg');
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('../images/bg2.jpeg');
+    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('/assets/bg2.jpeg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .38), rgba(0, 0, 0, .38)), url('/assets/bg2.jpeg');
     background-position: 0px 0px, 0px 0px;
     background-size: auto, 1458px 848px;
 }
 
 .body.background {
-    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .31), rgba(0, 0, 0, .31)), url('../images/bg2.jpeg');
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, .31), rgba(0, 0, 0, .31)), url('../images/bg2.jpeg');
+    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .31), rgba(0, 0, 0, .31)), url('/assets/bg2.jpeg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .31), rgba(0, 0, 0, .31)), url('/assets/bg2.jpeg');
     background-size: auto, cover;
     background-repeat: repeat, no-repeat;
     background-attachment: scroll, fixed;
@@ -306,8 +306,8 @@
 }
 
 .body-2 {
-    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('../images/bg2.jpeg');
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('../images/bg2.jpeg');
+    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('/assets/bg2.jpeg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('/assets/bg2.jpeg');
     background-position: 0px 0px, 0px 0px;
     background-size: auto, cover;
 }
@@ -694,8 +694,8 @@
         overflow: scroll;
     }
     .body.background {
-        background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('../images/bg2.jpeg');
-        background-image: linear-gradient(180deg, rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('../images/bg2.jpeg');
+        background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('/assets/bg2.jpeg');
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, .4), rgba(0, 0, 0, .4)), url('/assets/bg2.jpeg');
         background-position: 0px 0px, 0px 0px;
         background-size: auto, cover;
         background-repeat: repeat, no-repeat;
@@ -824,7 +824,7 @@
 
 @font-face {
     font-family: 'Gotham';
-    src: url('../fonts/Gotham-Bold.otf') format('opentype');
+    src: url('/assets/Gotham-Bold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
 }
