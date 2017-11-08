@@ -102,3 +102,28 @@
 <div class="section-2">
   <div class="footer parrafo">Copyright 2017</div>
 </div>
+
+<script>
+  // Makes the background to be in a fixed position.
+  $('body').addClass('background');
+
+  // Toggles the details view of a given selector switch
+  function addToggleToTab(div_class_name){
+      var selector_view = `div.${div_class_name}`;
+      $(selector_view).onclick = function (ev) {
+          var detail_view = `div.details.${div_class_name}`;
+          if (detail_view.style.display === "none") {
+              detail_view.style.display = "block";
+          } else {
+              detail_view.style.display = "none";
+          }
+      }
+  }
+
+  // Add toggles buttons.
+  //TODO: Move this logic to a shared file.
+  addToggleToTab('tools');
+  addToggleToTab('backup');
+  addToggleToTab('realtime');
+  addToggleToTab('authorities');
+</script>
