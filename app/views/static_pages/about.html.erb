@@ -110,6 +110,8 @@
   // Hides all detail views.
   function hideDetailViews(){
       $(`div.details`).css('display','none');
+      $(`div.details > img`).css('opacity', '0.4');
+
   }
 
   // Toggles the details view of a given selector switch
@@ -117,8 +119,8 @@
       var selector_view = $(`div.detail-selector.${div_class_name}`);
       selector_view.click(function(e) {
           hideDetailViews();
-          var detail_view = $(`div.details.${div_class_name}`);
-          detail_view.css('display' ,"block");
+          $(`div.details.${div_class_name}`).css('display' ,"block");
+          $(`div.details.${div_class_name} > img`).css('opacity', '1');
       });
   }
 
@@ -128,4 +130,8 @@
   addToggleToTab('backup');
   addToggleToTab('realtime');
   addToggleToTab('authorities');
+
+  hideDetailViews();
+  $(`div.details.tools`).css('display','block');
+
 </script>
