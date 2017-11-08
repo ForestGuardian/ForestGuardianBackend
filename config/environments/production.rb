@@ -90,7 +90,7 @@ Rails.application.configure do
   }
 
   # Mailer host.
-  config.action_mailer.default_url_options = { :host => 'app.forestguardian.org'}
+  config.action_mailer.default_url_options = { :host => 'forestguardian.org'}
   # SMTP settings.
   config.action_mailer.smtp_settings = {
       :address              => "smtp.zoho.com",
