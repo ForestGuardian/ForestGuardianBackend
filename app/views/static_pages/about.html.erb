@@ -107,18 +107,18 @@
   // Makes the background to be in a fixed position.
   $('body').addClass('background');
 
+  // Hides all detail views.
+  function hideDetailViews(){
+      $(`div.details`).css('display','none');
+  }
+
   // Toggles the details view of a given selector switch
   function addToggleToTab(div_class_name){
       var selector_view = $(`div.detail-selector.${div_class_name}`);
-      console.log(selector_view);
       selector_view.click(function(e) {
+          hideDetailViews();
           var detail_view = $(`div.details.${div_class_name}`);
-          console.log(detail_view);
-          if (detail_view.css('display') === "none") {
-              detail_view.css('display' ,"block");
-          } else {
-              detail_view.css('display' ,"none");
-          }
+          detail_view.css('display' ,"block");
       });
   }
 
