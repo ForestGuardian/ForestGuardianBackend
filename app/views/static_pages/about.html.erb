@@ -114,10 +114,10 @@
       selector_view.click(function(e) {
           var detail_view = $(`div.details.${div_class_name}`);
           console.log(detail_view);
-          if (detail_view.style.display === "none") {
-              detail_view.style.display = "block";
+          if (detail_view.css('display') === "none") {
+              detail_view.css('display' ,"block");
           } else {
-              detail_view.style.display = "none";
+              detail_view.css('display' ,"none");
           }
       });
   }
