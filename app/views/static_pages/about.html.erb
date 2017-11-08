@@ -15,10 +15,10 @@
       <h1 class="centraltext heading section_two">CHARACTERISTICS <br>AND SPECS</h1>
       <div>
         <div data-collapse="small" data-animation="default" data-duration="400" class="navbar-2 w-nav">
-          <div data-w-id="0cee0433-a917-795b-2335-cbc3ac40f4af" class="tools"><a href="#" class="caract_nav w-nav-link">TOOLS</a><img src="/assets/arrow.svg" data-w-id="3cfa866d-6522-160b-2433-02bbf01c1599" class="image-7"></div>
-          <div data-w-id="80436545-d6a9-03cc-51e1-6f4ac91ddcb4" class="backup"><a href="#" class="caract_nav w-nav-link">BACK UP</a><img src="/assets/arrow.svg" data-w-id="9ab73bc3-a8c7-0a0e-9003-5fd34b23daa5" style="opacity:0.4" class="image-7"></div>
-          <div data-w-id="544f33a3-0de0-8356-5e4a-d5f58f8106ca" class="realtime"><a href="#" class="caract_nav w-nav-link">REAL TIME</a><img src="/assets/arrow.svg" data-w-id="ad21f4f5-45c1-0da8-7bc5-0cfc9dcde2d9" style="opacity:0.4" class="image-7"></div>
-          <div data-w-id="63cc8b35-2edc-d1a9-df6d-f1f5f7ab2498" class="authorities"><a href="#" class="caract_nav w-nav-link">AUTHORITIES</a><img src="/assets/arrow.svg" data-w-id="dcec51fd-c8b8-e27f-602a-864659598567" style="opacity:0.4" class="image-7"></div>
+          <div data-w-id="0cee0433-a917-795b-2335-cbc3ac40f4af" class="detail-selector tools"><a href="#" class="caract_nav w-nav-link">TOOLS</a><img src="/assets/arrow.svg" data-w-id="3cfa866d-6522-160b-2433-02bbf01c1599" class="image-7"></div>
+          <div data-w-id="80436545-d6a9-03cc-51e1-6f4ac91ddcb4" class="detail-selector backup"><a href="#" class="caract_nav w-nav-link">BACK UP</a><img src="/assets/arrow.svg" data-w-id="9ab73bc3-a8c7-0a0e-9003-5fd34b23daa5" style="opacity:0.4" class="image-7"></div>
+          <div data-w-id="544f33a3-0de0-8356-5e4a-d5f58f8106ca" class="detail-selector realtime"><a href="#" class="caract_nav w-nav-link">REAL TIME</a><img src="/assets/arrow.svg" data-w-id="ad21f4f5-45c1-0da8-7bc5-0cfc9dcde2d9" style="opacity:0.4" class="image-7"></div>
+          <div data-w-id="63cc8b35-2edc-d1a9-df6d-f1f5f7ab2498" class="detail-selector authorities"><a href="#" class="caract_nav w-nav-link">AUTHORITIES</a><img src="/assets/arrow.svg" data-w-id="dcec51fd-c8b8-e27f-602a-864659598567" style="opacity:0.4" class="image-7"></div>
         </div>
       </div>
       <div>
@@ -109,7 +109,7 @@
 
   // Toggles the details view of a given selector switch
   function addToggleToTab(div_class_name){
-      var selector_view = $(`div.${div_class_name}`);
+      var selector_view = $(`div.detail-selector.${div_class_name}`);
       console.log(selector_view);
       $(selector_view).onclick = function (ev) {
           var detail_view = $(`div.details.${div_class_name}`);
