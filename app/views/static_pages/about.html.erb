@@ -111,7 +111,7 @@
   function addToggleToTab(div_class_name){
       var selector_view = $(`div.detail-selector.${div_class_name}`);
       console.log(selector_view);
-      $(selector_view).onclick = function (ev) {
+      selector_view.onclick = function (ev) {
           var detail_view = $(`div.details.${div_class_name}`);
           console.log(detail_view);
           if (detail_view.style.display === "none") {
